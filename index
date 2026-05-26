@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>마음에서 피어나는 정원 — 3주차 수업 피드백</title>
+<title>마음에서 피어나는 정원 — 수업 피드백</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap');
 
@@ -16,7 +16,9 @@
     min-height: 100vh;
   }
 
-  /* 비밀번호 화면 */
+  /* ═══════════════════════════════════════
+     🔒 비밀번호 화면
+  ═══════════════════════════════════════ */
   #lock {
     display: flex;
     align-items: center;
@@ -56,7 +58,9 @@
   #lock-box button:hover { background: #444; }
   #err { color: #c0392b; font-size: 12px; margin-top: 10px; display: none; }
 
-  /* 본문 */
+  /* ═══════════════════════════════════════
+     📄 본문
+  ═══════════════════════════════════════ */
   #content {
     display: none;
     max-width: 680px;
@@ -110,7 +114,7 @@
 
   .subtitle { font-size: 13px; color: #999; }
 
-  /* 섹션 */
+  /* 섹션 공통 */
   .section {
     padding: 1.75rem 0;
     border-bottom: 0.5px solid #e8e5dc;
@@ -125,7 +129,9 @@
     display: flex; align-items: center; gap: 6px;
   }
 
-  /* 수업 내용 요약 */
+  /* ─────────────────────────────────────
+     섹션 1. 수업 내용 요약
+  ───────────────────────────────────── */
   .activity-list { display: flex; flex-direction: column; gap: 10px; }
 
   .activity-item {
@@ -145,80 +151,51 @@
     flex-shrink: 0;
   }
 
-  /* 크루 카드 */
-  .crew-grid {
+  /* ─────────────────────────────────────
+     섹션 2. 크루들 작품 설명 및 특징
+  ───────────────────────────────────── */
+ .crew-grid {
     display: flex;
     flex-direction: column;
     gap: 12px;
     margin-bottom: 1.5rem;
-  }
+}
 
   .crew-card {
     background: #f5f4f0;
     border-radius: 12px;
-    padding: 16px 18px;
+    padding: 14px 16px;
   }
 
-  .crew-header {
-    display: flex; align-items: center; gap: 10px;
-    margin-bottom: 10px;
-  }
+  .crew-emoji { font-size: 22px; margin-bottom: 6px; }
+  .crew-name { font-size: 13px; font-weight: 500; color: #222; margin-bottom: 2px; }
+  .crew-nature { font-size: 12px; color: #888; margin-bottom: 8px; }
+  .crew-desc { font-size: 12px; color: #555; line-height: 2; }
 
-  .crew-emoji { font-size: 22px; }
-  .crew-name { font-size: 15px; font-weight: 500; color: #222; }
-
-  .crew-desc {
-    font-size: 13px; color: #555; line-height: 2;
-  }
-
-  /* 인상적인 순간 */
+  /* ─────────────────────────────────────
+     섹션 3. 기타
+  ───────────────────────────────────── */
   .highlight-box {
     background: #f0f7f0;
     border-left: 3px solid #3B6D11;
     border-radius: 0 10px 10px 0;
     padding: 14px 16px;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
   }
 
   .highlight-label {
     font-size: 11px; font-weight: 500;
-    color: #3B6D11; margin-bottom: 8px;
+    color: #3B6D11; margin-bottom: 6px;
   }
 
-  .highlight-text { font-size: 14px; color: #333; line-height: 1.8; }
+  .highlight-text { font-size: 14px; color: #333; line-height: 1.7; }
 
-  /* 기타 */
-  .etc-list {
-    display: flex; flex-direction: column; gap: 8px;
+  .etc-text {
+    font-size: 14px; color: #555; line-height: 1.8;
     margin-bottom: 1.25rem;
   }
 
-  .etc-item {
-    display: flex; gap: 10px; align-items: flex-start;
-    font-size: 13px; color: #555; line-height: 1.7;
-    padding: 10px 14px;
-    background: #f5f4f0;
-    border-radius: 10px;
-  }
-
-  .etc-num {
-    font-size: 11px; font-weight: 500;
-    color: #185FA5;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  /* 다음을 위한 한 걸음 */
-  .next-box {
-    background: #FFF8F0;
-    border-left: 3px solid #D85A30;
-    border-radius: 0 10px 10px 0;
-    padding: 14px 16px;
-    font-size: 14px; color: #555; line-height: 1.8;
-  }
-
-  /* 후원자 */
-  .sponsor-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1rem; }
+  .sponsor-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
 
   .sponsor-tag {
     display: flex; align-items: center; gap: 5px;
@@ -244,207 +221,192 @@
 <body>
 
 
-<!-- 본문 -->
+<!-- ═══════════════════════════════════════
+     📄 본문
+═══════════════════════════════════════ -->
 <div id="content" style="display:block">
 
   <!-- 헤더 -->
   <div class="header">
     <div class="flowers">
-      <span class="flower">🌤️</span>
-      <span class="flower">🌈</span>
+      <!-- ✏️ 이모지 바꿀 수 있어요 -->
+      <span class="flower">🌻</span>
+      <span class="flower">🌷</span>
       <span class="flower">🌱</span>
-      <span class="flower">🎨</span>
+      <span class="flower">🌸</span>
       <span class="flower">🍃</span>
     </div>
-    <div class="program-tag">고립·은둔청년 미술 프로그램</div>
+    <div class="program-tag">마음에서 피어나는 정원</div>
+    <!-- ✏️ 제목 수정 -->
     <div class="title">마음에서 피어나는 정원</div>
-    <div class="subtitle">3주차 수업 피드백 · 내 마음의 날씨 · 2025</div>
+    <!-- ✏️ 부제목 수정 (예: 2주차 · 잡지 콜라주) -->
+    <div class="subtitle">2주차 수업 피드백 · 2026</div>
   </div>
 
 
-  <!-- 섹션 1. 수업 내용 요약 -->
+  <!-- ─────────────────────────────────────
+       섹션 1. 수업 내용 요약
+  ───────────────────────────────────── -->
   <div class="section">
     <div class="section-label">📋 수업 내용 요약</div>
+행복 추억, 내가 꿈꾸는 미래모습 잡지 콜라주
     <div class="activity-list">
-      <div class="activity-item"><div class="step-num">1</div>생각의 환기 (인물 소개)</div>
-      <div class="activity-item"><div class="step-num">2</div>감정 컬러링 — 과거 · 현재 · 미래를 색으로 표현</div>
-      <div class="activity-item"><div class="step-num">3</div>지점토를 이용한 행복 트레이 만들기</div>
+      <!-- ✏️ 활동 내용 수정 / 추가 가능 -->
+      <div class="activity-item"><div class="step-num">1</div>1. 잡지에서 행복 추억 장면 찾기</div>
+      <div class="activity-item"><div class="step-num">2</div>2. 잡지로 내가 바라는 모습 콜라주 후 나눔</div>
+      <div class="activity-item"><div class="step-num">3</div>3. 페이퍼로 꽃 만들기</div>
+      <div class="activity-item"><div class="step-num">4</div>4. 감정컬러링 격자무늬 테이핑</div>
     </div>
   </div>
 
 
-  <!-- 섹션 2. 크루들 작품 설명 및 특징 -->
+  <!-- ─────────────────────────────────────
+       섹션 2. 크루들 작품 설명 및 특징
+       (ㄱㄴㄷ 순서)
+  ───────────────────────────────────── -->
   <div class="section">
     <div class="section-label">🎨 크루들 작품 설명 및 특징</div>
     <div class="crew-grid">
 
-      <!-- 검진홍 -->
+      <!-- ✏️ 각 카드: 이모지 / 이름 / 자연물 / 작품설명 수정 -->
 
       <div class="crew-card">
-        <div class="crew-header">
-          <div class="crew-emoji">🌀</div>
-          <div class="crew-name">검진홍</div>
-        </div>
-<img src="https://drive.google.com/uc?export=view&id=147IkuJj6Snl8wAoJGJdofxTkP3ESc_ec"
-     style="width:100%; border-radius:8px; margin-top:10px; margin-bottom:10px;">
-        <div class="crew-desc">
-          <strong>그림</strong><br>
-          분노를 표현함. 노려보는 눈이 주제.<br>
-          과거 — 노려보는 눈.<br>
-          현재 — 번개처럼 불시에 내리치는 것.<br>
-          미래 — 주먹으로 맞서 싸우겠다는 느낌. 악한 것이 원인이라고 함.<br>
-          주요 색상: 검은색, 빨간색, 진한 갈색.<br><br>
-          <strong>지점토</strong><br>
-          만들던 작품이 망가지자 고치지 않고 아예 새 작품을 만듦.
-        </div>
+        <div class="crew-emoji">🌀</div><!-- ✏️ 이모지 -->
+        <div class="crew-name">검진홍</div>
+        <div class="crew-nature">잡지 콜라주</div><!-- ✏️ 자연물 -->
+        <div class="crew-desc">1) 스크랩 내용-첫번째론 실제 인물들을 오린 후 진행 <br>-> 30년 전 실종자를 시간 여행을 통해서 헌터가 찾으러 간다라는 식의 스토리를 이야기함<br>
+2) 스크랩 내용 : 영화배우 2명, 농구선수 1명, 김치 - 유행을 넘어 평생 특산물, 티니핑-한 때 유행했었지, I'm hunter. <br>
+3) 자리배치 효과큼 저번 시간 좌측 맨끝에서 2주차는 우측 맨 앞. 영화, 스포츠에 대한 지식 해박, 스토리텔링으로 이어감<br>
+집까지 1시간 30분까지 멀다고 중간에 이동함.(코치님 통해 들음) 축구, 이탈리아 에이씨밀란 선수 좋아함,.<br>
+</div>
       </div>
 
-      <!-- 김도희 -->
       <div class="crew-card">
-        <div class="crew-header">
-          <div class="crew-emoji">🌸</div>
-          <div class="crew-name">김도희</div>
-        </div>
-        <div class="crew-desc">
-          쉬는 시간에 점심 식사.<br>
-          중간에 이동해야 해서 캔버스와 물감을 짜서 들고 감.<br>
-          집에서 하고 싶다고 함.<br>
-          지점토도 가져감.
-        </div>
+        <div class="crew-emoji">🌸</div>
+        <div class="crew-name">김도희</div>
+        <div class="crew-desc">1주차 병원 시간으로 중간에 이동, 2주차때는 참석 가능하다고 했으나 못함. 병원감. </div>
       </div>
 
-      <!-- 박우석 -->
       <div class="crew-card">
-        <div class="crew-header">
-          <div class="crew-emoji">🌿</div>
-          <div class="crew-name">박우석</div>
-        </div>
-        <div class="crew-desc">
-          <strong>그림</strong><br>
-          과거 — 어머니 고향 안면도의 좋은 기억.<br>
-          현재 — 빛줄기가 희망을 뜻함. 희망을 찾는 과정.<br>
-          미래 — 잘 모르겠다고 했으나, 곳곳에 생각지 못한 것들이 발견되기에 바탕을 보라색으로, 주황색을 다양한 형태로 표현.
-        </div>
+        <div class="crew-emoji">🌿</div>
+        <div class="crew-name">박우석</div>
+        <div class="crew-desc">불참 (이유 모름) 1주차 때, 새벽 1시까지 아르바이트 하고 밤새서 왔다고 함. 소묘를 좋아한다고 함.</div>
       </div>
 
-      <!-- 박진우 -->
       <div class="crew-card">
-        <div class="crew-header">
-          <div class="crew-emoji">♟️</div>
-          <div class="crew-name">박진우</div>
-        </div>
-        <div class="crew-desc">
-          명확한 가이드를 주면 어렵지 않게 하는 편.<br>
-          애니메이션 추천을 하자 가장 밝은 모습으로 설명함.
-        </div>
+        <div class="crew-emoji">♟️</div>
+        <div class="crew-name">박진우</div>
+        <div class="crew-desc">1) 스크랩 내용-첫번째론 애니메이션 먼저 붙임. 개를 좋아함. 휴식. <br>
+2) 스크랩 내용-애니메이션,게임,아이돌 관심. 아이린 좋아함, 아이돌 콘서트가보고 싶음(콜라주 작품 책상 앞에 두겠다고 가져감)<br>
+3) 감정 컬러링 할 때, 지점토 해보고 싶다고 함. 지점토 좋냐고 하니, 그림 그리는 게 더 낫다고 함.<br>
+수업 전에 진홍님과 대화하며 불안에 대한 이야기를 하며 좋은 이야기를 하는 듯한 느낌. <br>
+잡지 중에 마침 애니메이션 잡지가 있어서 참으로 다행.<br>
+</div>
       </div>
 
-      <!-- 박찬종 -->
       <div class="crew-card">
-        <div class="crew-header">
-          <div class="crew-emoji">☀️</div>
-          <div class="crew-name">박찬종</div>
-        </div>
-        <div class="crew-desc">
-          <strong>그림</strong><br>
-          테이핑에 이어 컬러 칠하는 부분도 섬세하고 정교함.<br>
-          신중하게 하는 편.<br>
-          끝까지 남아서 정리를 도와줌.
-        </div>
+        <div class="crew-emoji">☀️</div>
+        <div class="crew-name">박찬종</div>
+        <div class="crew-desc">1) 스크랩 내용 : 첫번째로 붙인 내용은 모르겠음. 다양한 장면을 빠르고 많이 오림. 큰 곰인형 , 한적한 곳에서 평온한 마음, 피아노 치는 것 상상, 휴식 원함. <br>
+2) 스크랩 내용 : 즐겁다, 꿈, 햇빛보다 화사한, 명상 장면,<br>
+3) 적극적으로 찾고 붙임. 책상 자리가 모자르자 이동해서 감. <br>
+동생 찬영 피아니스트라고 소개함. 본가에 갈 때 피아노를 치는 듯함.<br>
+격자 무늬 붙일 때 전체적인 밸런스가 상당히 좋았음 <br>
+마무리 못한 부분은 모아서 종이 신문으로 덮어서 따로 보관했음.<br>
+</div>
       </div>
 
-      <!-- 박형신 -->
       <div class="crew-card">
-        <div class="crew-header">
-          <div class="crew-emoji">🪨</div>
-          <div class="crew-name">박형신</div>
-        </div>
+        <div class="crew-emoji">🪨</div>
+        <div class="crew-name">박형신</div>
         <div class="crew-desc">
-          처음 시작할 때 살짝 스트레스 받는 듯했지만 다양하게 시도하고 많은 컬러를 사용함.<br>
-          발표 앞에 나와서 직접 함.<br><br>
-          <strong>그림</strong><br>
-          과거 — 검은색으로 표시.<br><br>
-          <strong>지점토</strong><br>
-          처음엔 어떻게 해야 할지 당황했지만 마지막엔 잘 만들었고, 주물럭 하는 촉감이 좋다고 함.<br><br>
-          전체적으로 첫 시작에 스트레스로 움직임이 많지만, 가이드와 격려를 주면 알아서 잘 해나가는 편.<br>
-          잡생각이 안 나서 좋다고 함.
-        </div>
+1) 스크랩 내용 : 첫번째로 붙인 내용은 곰돌이 (자신과 닮았다고 함), <br> 고양이가 자신을 보고 있는 것 같다.(고양이 시선이 곰돌이를 향해 있음), 미니 팬케이크 맛있어 보여서, 미나리, 음료수, 글귀 발췌<br>
+2) 수업 후 : 집중하느라 생각을 안 할수 있어서 좋았다 (정확한 워딩이 아닐 수 있으나, 이런 뉘앙스)<br>
+3) 열심히 참여하는 편, 저번시간에 만드는 건 살짝 힘들어 보였는데 오늘 쉬운 꽃은 자신감 있어 보이는 느낌.<br>
+</div>
       </div>
 
-      <!-- 정혜인 -->
       <div class="crew-card">
-        <div class="crew-header">
-          <div class="crew-emoji">🍃</div>
-          <div class="crew-name">정혜인</div>
-        </div>
+        <div class="crew-emoji">🍃</div>
+        <div class="crew-name">정혜인</div>
         <div class="crew-desc">
-          만드는 것과 컬러링을 좋아함. 백드롭 페인팅을 사서 해봤다고 함.<br><br>
-          <strong>그림</strong><br>
-          파스텔톤 분위기.<br>
-          과거 — 파도치며 물살이 바위에 흩어지는 장면.<br>
-          현재 — 모네의 정원 느낌. 꽃피우고 있음.<br>
-          미래 — 모르겠다고 했지만 그려냄.<br><br>
-          도구를 잘 사용하고 자신의 감정을 잘 표현함.
-        </div>
+1) 첫번째 붙인 내용 모르겠음.<br>
+작품 설명-파도가 몰아쳐도 내 발로 딛고 나아가겠다.  (be strong)<br>
+2) 작품 설명-기분 좋은 햇살, 건강한 식단, 아트적인 장치가 있으면 좋겠다. 꽃을 좋아함.<br>
+3) 기타<br>
+책에 줄 그을 때 자 대고 긋고 J성향이 강하다고 했으나 점점 뜻대로 안되는 걸 보며 바뀌었다고 함.<br>
+-> 감정 컬러링 격자무늬 테이핑할 때 센치 안 재고 진행<br>
+꽃만드는 의미를 물어봄, 자신이 원하는 부분 명확히 잘 알고 아트적인 감성있음. 작품을 만들고 싶어하는 느낌<br>
+약속은 한 달 전에 잡기를 원함. 이번주 금요일 생일임.<br>
+미술 프로그램 아니었으면 이런거 안했을 거라고 함. 대신, 잡지 퀄리티가 좋다고 함. <br>
+
+</div>
       </div>
 
     </div>
   </div>
 
 
-  <!-- 섹션 3. 기타 -->
+  <!-- ─────────────────────────────────────
+       섹션 3. 기타
+  ───────────────────────────────────── -->
   <div class="section">
     <div class="section-label">📌 기타</div>
 
-    <!-- 인상적인 순간 -->
+    <!-- ✏️ 인상적인 순간 / 에피소드 -->
     <div class="highlight-box">
       <div class="highlight-label">✦ 오늘의 인상적인 순간</div>
-      <div class="highlight-text">
-        <strong>1) 정혜인</strong><br>
-        그리다가 진우의 아이디어로 방향을 바꿨으나 만족스럽지 못했음. 테이핑을 떼자 그 부분도 사라져 아쉬워했지만, 다들 괜찮다고 하자 열심히 설명함. 말이 꼬여 잠시 앉았다가 다시 앞에 나가 TV 앞에서 발표. 모두가 용기에 박수를 보내줌.<br><br>
-        <strong>2) 박형신</strong><br>
-        수업 후 끝까지 마무리를 도와줌. 역으로 가는 길도 함께 이동. 첫째 날엔 같이 안 가려고 길을 돌아갔는데, 이번엔 함께 걸으면서 적극적으로 이야기함.
-      </div>
+      <div class="highlight-text"> 1) 페이퍼로 꽃을 만드는 방법 해볼 때, 형신님이 노란색으로 전체를 칠하니까 <br>
+        진우님이 "꽃송이 위에만 칠하는 건데요?" 라고 함. 그랬더니 형신님이 "뭐든 상관없다고 해서 괜찮다." 라고 하며 꽃 전체를 노란색으로 칠하심. <br>
+2) 전체 분위기 - 쉬는 시간 반납하면서까지 열정적으로 참여하심 (저번주와 다른 모습)<br>
+
+</div>
     </div>
 
-    <!-- 기타 항목 -->
-    <div class="etc-list">
-      <div class="etc-item"><span class="etc-num">1</span>전체적으로 적극적으로 컬러를 찾기 위해 움직임.</div>
-      <div class="etc-item"><span class="etc-num">2</span>다음번엔 더 일찍 와서 컬러를 분류해 두고, 물감 짜는 법도 알려줘야겠음.</div>
-      <div class="etc-item"><span class="etc-num">3</span>오늘 인물 소개를 하고 시작했는데, 줄이거나 3시쯤 진행하는 게 좋겠음.</div>
-      <div class="etc-item"><span class="etc-num">4</span>10분 늦게 끝남. 일정 있는 분은 먼저 이동하고, 다들 괜찮다고 해서 더 진행.</div>
-      <div class="etc-item"><span class="etc-num">5</span>수업 진도를 낮췄는데 1주에 1개씩 진행하는 게 적합할 것으로 보임.</div>
-      <div class="etc-item"><span class="etc-num">6</span>1개 마친 후 박반장 워크북을 이어가면 좋겠음. 감사 나누는 것도 좋아 보임.</div>
-      <div class="etc-item"><span class="etc-num">7</span>아크릴 작업 시 신문지를 지금보다 더 많이 깔아야겠음.</div>
-    </div>
+    <!-- ✏️ 기타 내용 -->
+    <div class="etc-text">
+1) 익명 피드백 <br>
+잡지 오려 붙여 콜라주 만드는 때 편안했어요<br>
+희망하는 평온한 삶을 생각하며 만들었어요	<br>
+지금 감정 - 즐거워요	<br>
+기분변화 - 조금 가벼워졌어요<br>
+연결감 - 꽤 들었어요<br>
+이번주 첫 걸음 - 물 한 잔 마시기, 밥 챙겨 먹기, 잠깐 밖에 나가기	<br>
+2) 1주차 보다 나눔을 줄임 (불편할까봐 그러나 대화 좋아하는 듯함.)<br>
+3) 감정 컬러링 이어서 할 예정<br>
+4) 사진 촬영 및 단톡방 업로드 거부하는 사람 없었음. <br>
+5) 찬종-참는 스타일이니, 가끔 자연스럽게 괜찮은지 묻기<br>
+6) 형신-서포터해주는 고마운 상황<br>
+7) 진홍-자신의 이야기를 굉장히 잘하는 편. 소외된다고 느끼지 않게 질문하기.<br>
+8) 전체적으로 서로의 이야기를 잘 듣고 수용하는 편.<br>
+9) 10분 일찍 끝내고, 같이 정리하는 것 좋았음.<br>
+10) 문제 발생시 코치님께 공유 <br>
+11) 지금보다 수업 진도를 더 늦추고, 작품 완성 후 나눔을 갖는 것이 좋을 듯함.<br>
 
-    <!-- 후원자 -->
-    <div class="sponsor-wrap">
-      <div class="sponsor-tag">이정은</div>
-      <div class="sponsor-tag">최경석 <span class="sponsor-item">카스타드</span></div>
-      <div class="sponsor-tag">박반장 <span class="sponsor-item">워크북·키링</span></div>
+
+</div>
+
+    <!-- ✏️ 후원자 -->
+    <div class="sponsor-wrap"> 후원
+      <div class="sponsor-tag">박수려 <span class="sponsor-item">잡지</span></div>
+      <div class="sponsor-tag">박경옥 <span class="sponsor-item">1주차 1일 스텝</span></div>
+      <div class="sponsor-tag">박반장 <span class="sponsor-item">워크북·키링·기타</span></div>
+      <div class="sponsor-tag">이정은,최경석 <span class="sponsor-item">카스타드</span></div>
       <div class="sponsor-tag">홍수빈 <span class="sponsor-item">안경닦이</span></div>
-      <div class="sponsor-tag">박경옥 <span class="sponsor-item">1일 스텝</span></div>
-    </div>
-  </div>
 
-
-  <!-- 섹션 4. 다음을 위한 한 걸음 -->
-  <div class="section">
-    <div class="section-label">👣 다음을 위한 한 걸음</div>
-    <div class="next-box">
-      ✏️ 다음 주를 위한 준비나 다짐을 여기에 입력하세요.
     </div>
   </div>
 
 
   <!-- 푸터 -->
   <div class="footer">
+    <!-- ✏️ 푸터 문구 수정 가능 -->
     함께해 주셔서 감사합니다 <span class="heart">♥</span><br>
-    다음 주에도 함께 정원을 가꾸겠습니다 🌱
+    다음 주에도 함께 정원을 잘 가꾸도록 응원 부탁드려요🌱
   </div>
 
 </div>
+
 
 </body>
 </html>
