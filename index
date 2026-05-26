@@ -246,7 +246,7 @@
 </div>
 
 <!-- 본문 -->
-<div id="content" style="display:block">
+<div id="content" style="display:none">
 
   <!-- 헤더 -->
   <div class="header">
