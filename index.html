@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>마음에서 피어나는 정원</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #faf9f6;
+    color: #222;
+    min-height: 100vh;
+  }
+
+  /* 비밀번호 화면 */
+  #lock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+
+  #lock-box {
+    background: #fff;
+    border-radius: 20px;
+    border: 0.5px solid #e0ddd5;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+  }
+
+  #lock-box .icon { font-size: 36px; margin-bottom: 1rem; }
+  #lock-box h2 { font-family: 'Gowun Batang', serif; font-size: 20px; margin-bottom: 6px; }
+  #lock-box p { font-size: 13px; color: #999; margin-bottom: 1.5rem; }
+  #lock-box input {
+    width: 100%; padding: 11px 14px;
+    border: 0.5px solid #ccc; border-radius: 10px;
+    font-size: 15px; text-align: center;
+    margin-bottom: 12px;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  #lock-box input:focus { outline: none; border-color: #888; }
+  #lock-box button {
+    width: 100%; padding: 12px;
+    background: #222; color: #fff;
+    border: none; border-radius: 10px;
+    font-size: 15px; font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+  }
+  #lock-box button:hover { background: #444; }
+  #err { color: #c0392b; font-size: 12px; margin-top: 10px; display: none; }
+
+  /* 본문 */
+  #content {
+    display: none;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+  }
+
+  /* 헤더 */
+  .header {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    border-bottom: 0.5px solid #e8e5dc;
+    margin-bottom: 2.5rem;
+  }
+
+  .flowers {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .flower {
+    font-size: 22px;
+    animation: sway 3s ease-in-out infinite;
+  }
+  .flower:nth-child(2) { animation-delay: 0.3s; }
+  .flower:nth-child(3) { animation-delay: 0.6s; }
+  .flower:nth-child(4) { animation-delay: 0.9s; }
+  .flower:nth-child(5) { animation-delay: 1.2s; }
+
+  @keyframes sway {
+    0%, 100% { transform: rotate(-5deg) translateY(0); }
+    50% { transform: rotate(5deg) translateY(-4px); }
+  }
+
+  .program-tag {
+    display: inline-block;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.12em;
+    color: #185FA5; background: #E6F1FB;
+    border-radius: 20px;
+    padding: 3px 14px; margin-bottom: 14px;
+  }
+
+  .title {
+    font-family: 'Gowun Batang', serif;
+    font-size: 30px; font-weight: 700;
+    margin-bottom: 8px; line-height: 1.4;
+  }
+
+  .subtitle { font-size: 13px; color: #999; }
+
+  /* 주차 선택 */
+  .section-label {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: #aaa; margin-bottom: 1.25rem;
+  }
+
+  .week-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .week-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border: 0.5px solid #e8e5dc;
+    border-radius: 14px;
+    padding: 18px 20px;
+    text-decoration: none;
+    color: #222;
+    transition: background 0.15s, border-color 0.15s;
+    cursor: pointer;
+  }
+
+  .week-card:hover {
+    background: #f5f4f0;
+    border-color: #ccc;
+  }
+
+  .week-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .week-emoji { font-size: 28px; }
+
+  .week-num {
+    font-size: 11px; font-weight: 500;
+    color: #185FA5; background: #E6F1FB;
+    border-radius: 20px;
+    padding: 2px 10px;
+    margin-bottom: 4px;
+    display: inline-block;
+  }
+
+  .week-title {
+    font-size: 15px; font-weight: 500;
+    color: #222;
+  }
+
+  .week-desc {
+    font-size: 12px; color: #999;
+    margin-top: 3px;
+  }
+
+  .week-arrow {
+    font-size: 18px;
+    color: #ccc;
+  }
+
+  /* 예정 카드 */
+  .week-card.upcoming {
+    opacity: 0.45;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .upcoming-badge {
+    font-size: 10px; font-weight: 500;
+    color: #999; background: #f0ede8;
+    border-radius: 20px;
+    padding: 2px 8px;
+  }
+
+  /* 푸터 */
+  .footer {
+    text-align: center;
+    font-size: 12px; color: #bbb;
+    padding: 2.5rem 0 0;
+  }
+
+  .footer .heart { color: #D85A30; }
+</style>
+</head>
+<body>
+
+<!-- 비밀번호 화면 -->
+<div id="lock">
+  <div id="lock-box">
+    <div class="icon">🌱</div>
+    <h2>마음에서 피어나는 정원</h2>
+    <p>관계자 전용 수업 피드백입니다</p>
+    <input type="password" id="pw" placeholder="비밀번호를 입력하세요"
+           onkeydown="if(event.key==='Enter') checkPw()">
+    <button onclick="checkPw()">확인</button>
+    <p id="err">비밀번호가 맞지 않아요</p>
+  </div>
+</div>
+
+<!-- 본문 -->
+<div id="content">
+
+  <div class="header">
+    <div class="flowers">
+      <span class="flower">🌻</span>
+      <span class="flower">🌷</span>
+      <span class="flower">🌱</span>
+      <span class="flower">🌸</span>
+      <span class="flower">🍃</span>
+    </div>
+    <div class="program-tag">고립·은둔청년 미술 프로그램</div>
+    <div class="title">마음에서 피어나는 정원</div>
+    <div class="subtitle">수업 피드백 모아보기 · 2025</div>
+  </div>
+
+  <div class="section-label">📚 주차별 피드백</div>
+
+  <div class="week-list">
+
+    <!-- 2주차 -->
+    <a class="week-card" href="week2.html">
+      <div class="week-left">
+        <div class="week-emoji">🌷</div>
+        <div>
+          <div class="week-num">2주차</div>
+          <div class="week-title">잡지 콜라주</div>
+          <div class="week-desc">나를 표현하는 이미지 찾기</div>
+        </div>
+      </div>
+      <div class="week-arrow">›</div>
+    </a>
+
+    <!-- 3주차 -->
+    <a class="week-card" href="week3.html">
+      <div class="week-left">
+        <div class="week-emoji">🌤️</div>
+        <div>
+          <div class="week-num">3주차</div>
+          <div class="week-title">내 마음의 날씨</div>
+          <div class="week-desc">감정 컬러링 + 행복 트레이</div>
+        </div>
+      </div>
+      <div class="week-arrow">›</div>
+    </a>
+
+    <!-- 4주차 (예정) -->
+    <div class="week-card upcoming">
+      <div class="week-left">
+        <div class="week-emoji">🌿</div>
+        <div>
+          <div class="week-num">4주차</div>
+          <div class="week-title">준비 중</div>
+          <div class="week-desc">곧 업데이트됩니다</div>
+        </div>
+      </div>
+      <div class="upcoming-badge">예정</div>
+    </div>
+
+    <!-- 5주차 (예정) -->
+    <div class="week-card upcoming">
+      <div class="week-left">
+        <div class="week-emoji">🌸</div>
+        <div>
+          <div class="week-num">5주차</div>
+          <div class="week-title">준비 중</div>
+          <div class="week-desc">곧 업데이트됩니다</div>
+        </div>
+      </div>
+      <div class="upcoming-badge">예정</div>
+    </div>
+
+    <!-- 6주차 (예정) -->
+    <div class="week-card upcoming">
+      <div class="week-left">
+        <div class="week-emoji">🍃</div>
+        <div>
+          <div class="week-num">6주차</div>
+          <div class="week-title">준비 중</div>
+          <div class="week-desc">곧 업데이트됩니다</div>
+        </div>
+      </div>
+      <div class="upcoming-badge">예정</div>
+    </div>
+
+    <!-- 7주차 (예정) -->
+    <div class="week-card upcoming">
+      <div class="week-left">
+        <div class="week-emoji">🌻</div>
+        <div>
+          <div class="week-num">7주차</div>
+          <div class="week-title">준비 중</div>
+          <div class="week-desc">곧 업데이트됩니다</div>
+        </div>
+      </div>
+      <div class="upcoming-badge">예정</div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    함께해 주셔서 감사합니다 <span class="heart">♥</span><br>
+    매주 정원이 피어나고 있습니다 🌱
+  </div>
+
+</div>
+
+<!-- 👉 비밀번호: "여기를바꾸세요" 부분만 수정하세요 -->
+<script>
+  var PASSWORD = "2580*";
+
+  function checkPw() {
+    if (document.getElementById('pw').value === PASSWORD) {
+      document.getElementById('lock').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+    } else {
+      document.getElementById('err').style.display = 'block';
+    }
+  }
+</script>
+
+</body>
+</html>
