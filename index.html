@@ -3,263 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>마음에서 피어나는 정원 — 3주차 수업 피드백</title>
+<title>마음에서 피어나는 정원 — 4주차</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap');
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans KR', sans-serif; background: #faf9f6; color: #222; min-height: 100vh; }
 
-  body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background: #faf9f6;
-    color: #222;
-    min-height: 100vh;
-  }
-
-  /* 비밀번호 화면 */
-  #lock {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 2rem;
-  }
-
-  #lock-box {
-    background: #fff;
-    border-radius: 20px;
-    border: 0.5px solid #e0ddd5;
-    padding: 2.5rem 2rem;
-    width: 100%;
-    max-width: 360px;
-    text-align: center;
-  }
-
+  #lock { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 2rem; }
+  #lock-box { background: #fff; border-radius: 20px; border: 0.5px solid #e0ddd5; padding: 2.5rem 2rem; width: 100%; max-width: 360px; text-align: center; }
   #lock-box .icon { font-size: 36px; margin-bottom: 1rem; }
   #lock-box h2 { font-family: 'Gowun Batang', serif; font-size: 20px; margin-bottom: 6px; }
   #lock-box p { font-size: 13px; color: #999; margin-bottom: 1.5rem; }
-  #lock-box input {
-    width: 100%; padding: 11px 14px;
-    border: 0.5px solid #ccc; border-radius: 10px;
-    font-size: 15px; text-align: center;
-    margin-bottom: 12px;
-    font-family: 'Noto Sans KR', sans-serif;
-  }
+  #lock-box input { width: 100%; padding: 11px 14px; border: 0.5px solid #ccc; border-radius: 10px; font-size: 15px; text-align: center; margin-bottom: 12px; font-family: 'Noto Sans KR', sans-serif; }
   #lock-box input:focus { outline: none; border-color: #888; }
-  #lock-box button {
-    width: 100%; padding: 12px;
-    background: #222; color: #fff;
-    border: none; border-radius: 10px;
-    font-size: 15px; font-family: 'Noto Sans KR', sans-serif;
-    cursor: pointer;
-  }
+  #lock-box button { width: 100%; padding: 12px; background: #222; color: #fff; border: none; border-radius: 10px; font-size: 15px; font-family: 'Noto Sans KR', sans-serif; cursor: pointer; }
   #lock-box button:hover { background: #444; }
   #err { color: #c0392b; font-size: 12px; margin-top: 10px; display: none; }
 
-  /* 본문 */
-  #content {
-    display: none;
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 0 1.5rem 4rem;
-  }
-
-  /* 헤더 */
-  .header {
-    text-align: center;
-    padding: 2.5rem 1rem 2rem;
-    border-bottom: 0.5px solid #e8e5dc;
-    margin-bottom: 2rem;
-  }
-
-  .flowers {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 1rem;
-  }
-
-  .flower {
-    font-size: 22px;
-    animation: sway 3s ease-in-out infinite;
-  }
+  #content { display: none; max-width: 680px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+  .header { text-align: center; padding: 2.5rem 1rem 2rem; border-bottom: 0.5px solid #e8e5dc; margin-bottom: 2rem; }
+  .flowers { display: flex; justify-content: center; gap: 8px; margin-bottom: 1rem; }
+  .flower { font-size: 22px; animation: sway 3s ease-in-out infinite; }
   .flower:nth-child(2) { animation-delay: 0.3s; }
   .flower:nth-child(3) { animation-delay: 0.6s; }
   .flower:nth-child(4) { animation-delay: 0.9s; }
   .flower:nth-child(5) { animation-delay: 1.2s; }
-
-  @keyframes sway {
-    0%, 100% { transform: rotate(-5deg) translateY(0); }
-    50% { transform: rotate(5deg) translateY(-4px); }
-  }
-
-  .program-tag {
-    display: inline-block;
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.12em;
-    color: #185FA5; background: #E6F1FB;
-    border-radius: 20px;
-    padding: 3px 14px; margin-bottom: 14px;
-  }
-
-  .title {
-    font-family: 'Gowun Batang', serif;
-    font-size: 28px; font-weight: 700;
-    margin-bottom: 6px; line-height: 1.4;
-  }
-
+  @keyframes sway { 0%, 100% { transform: rotate(-5deg) translateY(0); } 50% { transform: rotate(5deg) translateY(-4px); } }
+  .program-tag { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; color: #185FA5; background: #E6F1FB; border-radius: 20px; padding: 3px 14px; margin-bottom: 14px; }
+  .title { font-family: 'Gowun Batang', serif; font-size: 28px; font-weight: 700; margin-bottom: 6px; }
   .subtitle { font-size: 13px; color: #999; }
+  .back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #888; text-decoration: none; margin-bottom: 1.5rem; }
+  .back-btn:hover { color: #333; }
 
-  /* 섹션 */
-  .section {
-    padding: 1.75rem 0;
-    border-bottom: 0.5px solid #e8e5dc;
-  }
-
+  .section { padding: 1.75rem 0; border-bottom: 0.5px solid #e8e5dc; }
   .section:last-child { border-bottom: none; }
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #aaa; margin-bottom: 1rem; display: flex; align-items: center; gap: 6px; }
 
-  .section-label {
-    font-size: 11px; font-weight: 500;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    color: #aaa; margin-bottom: 1rem;
-    display: flex; align-items: center; gap: 6px;
-  }
-
-  /* 수업 내용 요약 */
   .activity-list { display: flex; flex-direction: column; gap: 10px; }
+  .activity-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; background: #f5f4f0; border-radius: 10px; font-size: 14px; color: #333; line-height: 1.6; }
+  .step-num { font-size: 11px; font-weight: 500; color: #185FA5; background: #E6F1FB; border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
 
-  .activity-item {
-    display: flex; align-items: center; gap: 12px;
-    padding: 12px 16px;
-    background: #f5f4f0;
-    border-radius: 10px;
-    font-size: 14px; color: #333;
-  }
-
-  .step-num {
-    font-size: 11px; font-weight: 500;
-    color: #185FA5; background: #E6F1FB;
-    border-radius: 50%;
-    width: 22px; height: 22px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-
-  /* 크루 카드 */
-  .crew-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 1.5rem;
-  }
-
-  .crew-card {
-    background: #f5f4f0;
-    border-radius: 12px;
-    padding: 16px 18px;
-  }
-
-  .crew-header {
-    display: flex; align-items: center; gap: 10px;
-    margin-bottom: 10px;
-  }
-
+  .crew-grid { display: flex; flex-direction: column; gap: 12px; }
+  .crew-card { background: #f5f4f0; border-radius: 12px; padding: 16px 18px; }
+  .crew-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
   .crew-emoji { font-size: 22px; }
   .crew-name { font-size: 15px; font-weight: 500; color: #222; }
+  .crew-desc { font-size: 13px; color: #555; line-height: 2; }
+  .crew-desc img { width: 100%; border-radius: 8px; margin-top: 10px; margin-bottom: 10px; }
+  .absent { opacity: 0.5; }
+  .absent-badge { display: inline-block; font-size: 11px; color: #999; background: #ede; border-radius: 20px; padding: 2px 10px; margin-left: 6px; }
 
-  .crew-desc {
-    font-size: 13px; color: #555; line-height: 2;
-  }
+  .sogang-box { background: #fffbe6; border-left: 3px solid #f0c040; border-radius: 0 10px 10px 0; padding: 12px 16px; margin-top: 10px; font-size: 13px; color: #555; line-height: 1.8; }
+  .sogang-label { font-size: 11px; font-weight: 500; color: #b8860b; margin-bottom: 4px; }
 
-  /* 인상적인 순간 */
-  .highlight-box {
-    background: #f0f7f0;
-    border-left: 3px solid #3B6D11;
-    border-radius: 0 10px 10px 0;
-    padding: 14px 16px;
-    margin-bottom: 1.25rem;
-  }
-
-  .highlight-label {
-    font-size: 11px; font-weight: 500;
-    color: #3B6D11; margin-bottom: 8px;
-  }
-
+  .highlight-box { background: #f0f7f0; border-left: 3px solid #3B6D11; border-radius: 0 10px 10px 0; padding: 14px 16px; margin-bottom: 1.25rem; }
+  .highlight-label { font-size: 11px; font-weight: 500; color: #3B6D11; margin-bottom: 8px; }
   .highlight-text { font-size: 14px; color: #333; line-height: 1.8; }
 
-  /* 기타 */
-  .etc-list {
-    display: flex; flex-direction: column; gap: 8px;
-    margin-bottom: 1.25rem;
-  }
+  .etc-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.25rem; }
+  .etc-item { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: #555; line-height: 1.7; padding: 10px 14px; background: #f5f4f0; border-radius: 10px; }
+  .etc-num { font-size: 11px; font-weight: 500; color: #185FA5; flex-shrink: 0; margin-top: 2px; }
 
-  .etc-item {
-    display: flex; gap: 10px; align-items: flex-start;
-    font-size: 13px; color: #555; line-height: 1.7;
-    padding: 10px 14px;
-    background: #f5f4f0;
-    border-radius: 10px;
-  }
+  .next-box { background: #FFF8F0; border-left: 3px solid #D85A30; border-radius: 0 10px 10px 0; padding: 14px 16px; font-size: 14px; color: #555; line-height: 1.8; }
 
-  .etc-num {
-    font-size: 11px; font-weight: 500;
-    color: #185FA5;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  /* 다음을 위한 한 걸음 */
-  .next-box {
-    background: #FFF8F0;
-    border-left: 3px solid #D85A30;
-    border-radius: 0 10px 10px 0;
-    padding: 14px 16px;
-    font-size: 14px; color: #555; line-height: 1.8;
-  }
-
- 
-
-  /* 푸터 */
-  .footer {
-    text-align: center;
-    font-size: 12px; color: #bbb;
-    padding: 2rem 0 0;
-  }
-
+  .footer { text-align: center; font-size: 12px; color: #bbb; padding: 2rem 0 0; }
   .footer .heart { color: #D85A30; }
 </style>
 </head>
 <body>
 
-
-<!-- 비밀번호 화면 -->
 <div id="lock">
   <div id="lock-box">
     <div class="icon">🌱</div>
     <h2>마음에서 피어나는 정원</h2>
     <p>관계자 전용 수업 피드백입니다</p>
-    <input type="password" id="pw" placeholder="비밀번호를 입력하세요"
-           onkeydown="if(event.key==='Enter') checkPw()">
+    <input type="password" id="pw" placeholder="비밀번호를 입력하세요" onkeydown="if(event.key==='Enter') checkPw()">
     <button onclick="checkPw()">확인</button>
     <p id="err">비밀번호가 맞지 않아요</p>
   </div>
 </div>
 
-<!-- 본문 -->
-<div id="content" style="display:none">
+<div id="content">
 
-  <!-- 헤더 -->
   <div class="header">
+    <a class="back-btn" href="index.html">← 목록으로</a>
     <div class="flowers">
-      <span class="flower">🌤️</span>
-      <span class="flower">🌈</span>
+      <span class="flower">🎁</span>
+      <span class="flower">🌟</span>
       <span class="flower">🌱</span>
-      <span class="flower">🎨</span>
-      <span class="flower">🍃</span>
+      <span class="flower">🍀</span>
+      <span class="flower">✨</span>
     </div>
-    <div class="program-tag">푸른고래 리커버리센터 미술프로그램</div>
+    <div class="program-tag">고립·은둔청년 미술 프로그램</div>
     <div class="title">마음에서 피어나는 정원</div>
-    <div class="subtitle">3주차 수업 피드백 · 내 마음의 날씨 · 2025</div>
+    <div class="subtitle">4주차 수업 피드백 · 행복 트레이 · 2025</div>
   </div>
 
 
@@ -267,9 +104,10 @@
   <div class="section">
     <div class="section-label">📋 수업 내용 요약</div>
     <div class="activity-list">
-      <div class="activity-item"><div class="step-num">1</div>생각의 환기 (인물 소개)</div>
-      <div class="activity-item"><div class="step-num">2</div>감정 컬러링 — 과거 · 현재 · 미래를 색으로 표현</div>
-      <div class="activity-item"><div class="step-num">3</div>지점토를 이용한 행복 트레이 만들기</div>
+      <div class="activity-item"><div class="step-num">1</div>지점토의 효능 소개</div>
+      <div class="activity-item"><div class="step-num">2</div>3주차 작품 보수 및 컬러링 작업</div>
+      <div class="activity-item"><div class="step-num">3</div>행복으로 채우는 내용 소개</div>
+      <div class="activity-item"><div class="step-num">4</div>행복 트레이에 담을 아이템 제작 — 행복한 요소를 생각하며 트레이를 만들고, 지난 시간에 이어 컬러링 작업도 진행</div>
     </div>
   </div>
 
@@ -280,21 +118,18 @@
     <div class="crew-grid">
 
       <!-- 검진홍 -->
-
       <div class="crew-card">
         <div class="crew-header">
           <div class="crew-emoji">🌀</div>
           <div class="crew-name">검진홍</div>
         </div>
         <div class="crew-desc">
-          <strong>그림</strong><br>
-          분노를 표현함. <br>
-          과거 — 노려보는 눈.<br>
-          현재 — 번개처럼 불시에 내리치는 것.<br>
-          미래 — 주먹으로 맞서 싸우겠다는 느낌(?).<br>
-          주요 색상: 검은색, 빨간색, 진한 갈색.<br><br>
-          <strong>지점토</strong><br>
-          만들던 작품이 망가지자 고치지 않고 아예 새 작품을 만듦.
+          최애 영화 알라딘의 요술램프를 표현함. 원하는 소원을 들어준다는 의미.<br>
+          씽둥이와 좋아하는 포차코(강아지 캐릭터), 별을 트레이에 달았음.<br><br>
+          <div class="sogang-box">
+            <div class="sogang-label">💬 소감</div>
+            예전에 내가 좋아했던 것을 다시 할 수 있어서 좋았다.
+          </div>
         </div>
       </div>
 
@@ -305,26 +140,21 @@
           <div class="crew-name">김도희</div>
         </div>
         <div class="crew-desc">
-          그림 - 과거 칸에 에피소드를 넣음. 내용은 모르지만 신선한 접근. <br>
-          과거를 설명할 때 질문으로 반응체크하며 어둡지 않냐고 함.<br>
-          쉬는 시간에 점심 식사함.<br>
-          중간에 이동해야 해서 캔버스와 물감을 짜서 들고 감.<br>
-          집에서 하고 싶다고 함.
-          지점토도 가져가서 해오겠다고 함.
+          작품: 나무와 고양이.<br>
+          나무의 크기는 중요하지 않고, 나무는 커가고 있다는 의미.<br>
+          예전에 빼앗겼던 것을 되찾는 상황을 나무에 투영해 표현함.<br><br>
+          <div class="sogang-box">
+            <div class="sogang-label">💬 소감</div>
+            나로선 온전히 있는 시간이어서 좋았다.
+          </div>
         </div>
       </div>
 
       <!-- 박우석 -->
-      <div class="crew-card">
+      <div class="crew-card absent">
         <div class="crew-header">
           <div class="crew-emoji">🌿</div>
-          <div class="crew-name">박우석</div>
-        </div>
-        <div class="crew-desc">
-          <strong>그림</strong><br>
-          과거 — 어머니 고향 안면도의 좋은 기억.<br>
-          현재 — 빛줄기가 희망을 뜻함. 희망을 찾는 과정.<br>
-          미래 — 잘 모르겠다고 했으나, 곳곳에 생각지 못한 것들이 발견되기에 바탕을 보라색으로, 주황색을 다양한 형태로 표현.
+          <div class="crew-name">박우석 <span class="absent-badge">미참석</span></div>
         </div>
       </div>
 
@@ -335,12 +165,12 @@
           <div class="crew-name">박진우</div>
         </div>
         <div class="crew-desc">
-          명확한 가이드를 주면 어렵지 않게 하는 편.<br>
-          애니메이션 추천을 하자 가장 밝은 모습으로 설명함.<br>
-          그림<br>
-          과거ㅡ어두움 미래ㅡ노란색에 무늬 넣으며 기린이나 새모양 같다고 함
-          지점토 시간 좋아함. 거침없이 망설이지 않고 고래 만듦.(새를 만들까 고민하다가)
-    
+          작품: 고래 (좋아하는 애니메이션 캐릭터도 언급).<br>
+          원하는 대로 나와서 마음에 든다고 함.<br><br>
+          <div class="sogang-box">
+            <div class="sogang-label">💬 소감</div>
+            재밌다.
+          </div>
         </div>
       </div>
 
@@ -351,29 +181,17 @@
           <div class="crew-name">박찬종</div>
         </div>
         <div class="crew-desc">
-          <strong>그림</strong><br>
-          테이핑에 이어 컬러 칠하는 부분도 섬세하고 정교함.<br>
-          신중하게 하는 편.<br>
-          끝까지 남아서 정리를 도와줌.
+          작품: 나에게 주는 선물.<br>
+          중학교 때 미술 2등이었던 기억, 잊고 있던 부분을 다시 발견한 것 같은 느낌.<br>
+          나에게도 이런 좋았던 시간, 좋아하는 면모들이 있음을 새롭게 발견함.
         </div>
       </div>
 
       <!-- 박형신 -->
-      <div class="crew-card">
+      <div class="crew-card absent">
         <div class="crew-header">
           <div class="crew-emoji">🪨</div>
-          <div class="crew-name">박형신</div>
-        </div>
-        <div class="crew-desc">
-          처음 시작할 때 살짝 스트레스 받는 듯했지만 다양하게 시도하고 많은 컬러를 사용함.<br>
-          발표 앞에 나와서 직접 함.<br><br>
-          <strong>그림</strong><br>
-          과거 — 검은색으로 표시.<br><br>
-          <strong>지점토</strong><br>
-          처음엔 어떻게 해야 할지 당황했지만 마지막엔 잘 만들었고, 주물럭 하는 촉감이 좋다고 함.<br><br>
-          전체적으로 첫 시작에 생각하거나 망설임이 길어지고 그 후엔 스트레스로 움직임이 많지만, 가이드와 격려를 주면 알아서 잘 해나가는 편.<br>
-          잡생각이 안 나서 좋다고 함.
-          
+          <div class="crew-name">박형신 <span class="absent-badge">미참석</span></div>
         </div>
       </div>
 
@@ -384,13 +202,14 @@
           <div class="crew-name">정혜인</div>
         </div>
         <div class="crew-desc">
-          만드는 것과 컬러링을 좋아함. 백드롭 페인팅을 사서 해봤다고 함.<br><br>
-          <strong>그림</strong><br>
-          파스텔톤 분위기.<br>
-          과거 — 파도치며 물살이 바위에 흩어지는 장면.<br>
-          현재 — 모네의 정원 느낌. 꽃피우고 있음.<br>
-          미래 — 모르겠다고 했지만 그려냄.<br><br>
-          도구를 잘 사용하고 자신의 감정을 잘 표현함.
+          작품: 구름, 하트, 은색 달빛.<br>
+          처음엔 그냥 트레이를 만들었는데 하다 보니 구름 같아서 구름 색으로 칠함.<br>
+          셋 중에 구름이 제일 마음에 든다고 함.<br>
+          하트도 원하는 대로 테두리 길이가 잘 나와서 다행이라고 함.<br><br>
+          <div class="sogang-box">
+            <div class="sogang-label">💬 소감</div>
+            내용은 잊었지만 긍정적인 느낌이었음.
+          </div>
         </div>
       </div>
 
@@ -402,27 +221,40 @@
   <div class="section">
     <div class="section-label">📌 기타</div>
 
-    <!-- 인상적인 순간 -->
     <div class="highlight-box">
       <div class="highlight-label">✦ 오늘의 인상적인 순간</div>
       <div class="highlight-text">
         <strong>1) 검진홍</strong><br>
-        그리다가 진우의 아이디어로 방향을 바꿨으나 만족스럽지 못했음. 테이핑을 떼자 그 부분도 사라져 아쉬워했지만, 다들 괜찮다고 하자 포기하지 않고 열심히 설명함. 말이 꼬여 잠시 안하겠다고 앉았다가 다시 해보겠다고 하고 앞에 나가 TV 앞에서 발표. 모두가 용기에 박수를 보내줌.<br><br>
-        <strong>2) 박형신</strong><br>
-        수업 후 끝까지 마무리를 도와줌. 역으로 가는 길도 함께 이동. 첫째 날엔 같이 안 가려고 길을 돌아갔는데, 이번엔 함께 걸으면서 적극적으로 이야기함.
+        전보다 얼굴이 밝아짐. 음악 볼륨 조절이 안 되자 먼저 나서서 리모컨으로 도와줌 — 적극성이 눈에 띄게 높아졌음.<br>
+        물감 통을 열다 한가득 나왔을 때 당황했지만, 다시 담는 법을 알려주자 금세 평정을 찾고 마무리해 나감.<br><br>
+        <strong>2) 박찬종 · 정혜인</strong><br>
+        수업 전후로 조용히, 섬세하게 서포트해 줌. 전보다 수업을 더 즐기는 느낌.<br><br>
+        <strong>3) 전체</strong><br>
+        서로의 작품을 진정으로 경청하는 모습이 인상적이었음. 콜라주 때와 마찬가지로 쉬는 시간을 반납하고 몰두해서 작업함.
       </div>
     </div>
 
-    <!-- 기타 항목 -->
     <div class="etc-list">
-      <div class="etc-item"><span class="etc-num">1</span>전체적으로 적극적으로 컬러를 찾기 위해 움직임.</div>
-      <div class="etc-item"><span class="etc-num">2</span>컬러별로 분류해 두고, 물감 짜는 법도 알려줘야겠음.</div>
-      <div class="etc-item"><span class="etc-num">3</span>오늘 인물 소개를 하고 시작했는데, 줄이거나 3시쯤 진행하는 게 좋겠음.</div>
-      <div class="etc-item"><span class="etc-num">4</span>컬러링 후 지점토 만드는 시간이 10분이 애매했음. 일정 있는 분은 먼저 이동하고, 다들 괜찮다고 해서 더 진행해서 4시10분 마무리함.</div>
-      <div class="etc-item"><span class="etc-num">5</span>저번보다 수업 진도를 더 낮췄는데도 속도를 조금 더 천천히 하기. 작품 만드는 속도 차이 갭이 좀 있고 나눔 시간을 좋아하고 말하는 분량과 시간이 다르면서 발생된 변수인듯.</div>
-      <div class="etc-item"><span class="etc-num">6</span>1개 마친 후 박반장 워크북을 이어가면 좋겠음. 감사한 부분에 대화 나누는 것도 좋아 보임.</div>
-      <div class="etc-item"><span class="etc-num">7</span>아크릴 작업 시 신문지를 지금보다 더 많이 비치해야겠음.물티슈필요.
-  </div>
+      <div class="etc-item"><span class="etc-num">1</span>수업 커리큘럼을 대폭 줄이고 1회차를 2회차에 걸쳐 진행하니 속도가 맞음.</div>
+      <div class="etc-item"><span class="etc-num">2</span>속도 변화로 인해 전시회 때 작업할 작품과 시간에 대한 고민이 생김.</div>
+      <div class="etc-item"><span class="etc-num">3</span>
+        전시회 프레임 고민 중:<br>
+        ① 캔버스천으로 거는 형태<br>
+        ② 현재 캔버스 10호를 나란히 붙이는 형태<br>
+        ③ 투명 필름 두꺼운 판에 레이어드 하는 방식<br>
+        ④ 30호~50호 캔버스 1개 구매하는 형태
+      </div>
+      <div class="etc-item"><span class="etc-num">4</span>수업 전과 중간에 1분 정도 영상을 보여주는데 환기가 되는 분위기.</div>
+      <div class="etc-item"><span class="etc-num">5</span>박반장 워크북 진행 안 함. 지점토 특성상 손에 묻는 게 많아서 일찍 마무리.</div>
+    </div>
+
+    <!-- 다음 주 안내 -->
+    <div class="highlight-box" style="background:#f0f0ff; border-color:#5555cc;">
+      <div class="highlight-label" style="color:#5555cc;">📅 다음 주 예고</div>
+      <div class="highlight-text">
+        행복 레시피 만드는 법 — 디저트 전문가 (라피드몽) 초빙 예정.<br>
+        실제 미니 케이크를 만들려 했으나 크루들이 그림 케이크를 더 원해서 원래대로 진행할 예정.
+      </div>
     </div>
   </div>
 
@@ -431,24 +263,18 @@
   <div class="section">
     <div class="section-label">👣 다음을 위한 한 걸음</div>
     <div class="next-box">
-      ✏️ 지점토 컬러링 예정.
+      행복 레시피 케이크 만들 예정 🎂
     </div>
   </div>
 
 
-  <!-- 푸터 -->
-  <div class="footer">
-    함께해 주셔서 감사합니다 <span class="heart">♥</span><br>
-    다음 주에도 함께 정원을 가꾸겠습니다 🌱
-  </div>
+  <div class="footer">함께해 주셔서 감사합니다 <span class="heart">♥</span><br>다음 주에도 함께 정원을 가꾸겠습니다 🌱</div>
 
 </div>
 
-
-<!-- 👉 비밀번호: "여기를바꾸세요" 부분만 수정하세요 -->
 <script>
+  /* ✏️ 비밀번호를 여기서 바꾸세요 */
   var PASSWORD = "2580*";
-
   function checkPw() {
     if (document.getElementById('pw').value === PASSWORD) {
       document.getElementById('lock').style.display = 'none';
@@ -458,8 +284,5 @@
     }
   }
 </script>
-
-
-
 </body>
 </html>
