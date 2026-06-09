@@ -1,290 +1,317 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>마음에서 피어나는 정원 — 4주차</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap');
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Noto Sans KR', sans-serif; background: #faf9f6; color: #222; min-height: 100vh; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마음이 피어나는 정원 — 수업 후 기록</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f5f3; color: #1a1a1a; min-height: 100vh; padding: 2rem 1rem 4rem; }
+    .wrap { max-width: 580px; margin: 0 auto; }
 
-  #lock { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 2rem; }
-  #lock-box { background: #fff; border-radius: 20px; border: 0.5px solid #e0ddd5; padding: 2.5rem 2rem; width: 100%; max-width: 360px; text-align: center; }
-  #lock-box .icon { font-size: 36px; margin-bottom: 1rem; }
-  #lock-box h2 { font-family: 'Gowun Batang', serif; font-size: 20px; margin-bottom: 6px; }
-  #lock-box p { font-size: 13px; color: #999; margin-bottom: 1.5rem; }
-  #lock-box input { width: 100%; padding: 11px 14px; border: 0.5px solid #ccc; border-radius: 10px; font-size: 15px; text-align: center; margin-bottom: 12px; font-family: 'Noto Sans KR', sans-serif; }
-  #lock-box input:focus { outline: none; border-color: #888; }
-  #lock-box button { width: 100%; padding: 12px; background: #222; color: #fff; border: none; border-radius: 10px; font-size: 15px; font-family: 'Noto Sans KR', sans-serif; cursor: pointer; }
-  #lock-box button:hover { background: #444; }
-  #err { color: #c0392b; font-size: 12px; margin-top: 10px; display: none; }
+    .intro-card { background: linear-gradient(135deg, #f0f7f0 0%, #e8f4e8 100%); border: 1px solid #c8e6c8; border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; }
+    .intro-title { font-size: 16px; font-weight: 700; color: #2d6a2d; margin-bottom: 10px; }
+    .intro-body { font-size: 13px; color: #3a3a3a; line-height: 1.85; }
+    .intro-body em { color: #2d6a2d; font-style: normal; font-weight: 600; }
+    .intro-divider { border: none; border-top: 1px solid #c8e6c8; margin: 12px 0; }
+    .intro-deadline { margin-top: 12px; font-size: 12px; color: #2d6a2d; background: rgba(255,255,255,0.6); border-radius: 8px; padding: 7px 10px; line-height: 1.6; }
 
-  #content { display: none; max-width: 680px; margin: 0 auto; padding: 0 1.5rem 4rem; }
-  .header { text-align: center; padding: 2.5rem 1rem 2rem; border-bottom: 0.5px solid #e8e5dc; margin-bottom: 2rem; }
-  .flowers { display: flex; justify-content: center; gap: 8px; margin-bottom: 1rem; }
-  .flower { font-size: 22px; animation: sway 3s ease-in-out infinite; }
-  .flower:nth-child(2) { animation-delay: 0.3s; }
-  .flower:nth-child(3) { animation-delay: 0.6s; }
-  .flower:nth-child(4) { animation-delay: 0.9s; }
-  .flower:nth-child(5) { animation-delay: 1.2s; }
-  @keyframes sway { 0%, 100% { transform: rotate(-5deg) translateY(0); } 50% { transform: rotate(5deg) translateY(-4px); } }
-  .program-tag { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; color: #185FA5; background: #E6F1FB; border-radius: 20px; padding: 3px 14px; margin-bottom: 14px; }
-  .title { font-family: 'Gowun Batang', serif; font-size: 28px; font-weight: 700; margin-bottom: 6px; }
-  .subtitle { font-size: 13px; color: #999; }
-  .back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #888; text-decoration: none; margin-bottom: 1.5rem; }
-  .back-btn:hover { color: #333; }
+    .top-note { font-size: 13px; color: #888; margin-bottom: 1.25rem; padding: 10px 14px; background: #efefed; border-radius: 10px; border-left: 2px solid #ccc; line-height: 1.6; }
 
-  .section { padding: 1.75rem 0; border-bottom: 0.5px solid #e8e5dc; }
-  .section:last-child { border-bottom: none; }
-  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #aaa; margin-bottom: 1rem; display: flex; align-items: center; gap: 6px; }
+    .section-title { font-size: 13px; font-weight: 700; color: #2d6a2d; margin: 1.5rem 0 10px; padding-left: 8px; display: flex; align-items: center; gap: 6px; }
+    .section-title::before { content: ''; display: inline-block; width: 3px; height: 14px; background: #2d6a2d; border-radius: 2px; }
 
-  .activity-list { display: flex; flex-direction: column; gap: 10px; }
-  .activity-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; background: #f5f4f0; border-radius: 10px; font-size: 14px; color: #333; line-height: 1.6; }
-  .step-num { font-size: 11px; font-weight: 500; color: #185FA5; background: #E6F1FB; border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .q-card { background: #fff; border: 1px solid #e8e8e6; border-radius: 14px; padding: 1.25rem; margin-bottom: 12px; }
+    .q-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; flex-wrap: wrap; }
+    .q-num { font-size: 11px; font-weight: 600; color: #aaa; background: #f5f5f3; padding: 2px 8px; border-radius: 20px; flex-shrink: 0; }
+    .q-tag { font-size: 11px; font-weight: 600; color: #2d6a2d; background: #e8f4e8; padding: 2px 8px; border-radius: 20px; flex-shrink: 0; }
+    .q-title { font-size: 15px; font-weight: 600; color: #1a1a1a; line-height: 1.5; }
+    .q-hint { font-size: 12px; color: #aaa; margin: 4px 0 14px; line-height: 1.5; }
+    .q-desc { font-size: 13px; color: #555; margin: 4px 0 14px; line-height: 1.6; background: #f9f9f8; padding: 8px 10px; border-radius: 8px; }
 
-  .crew-grid { display: flex; flex-direction: column; gap: 12px; }
-  .crew-card { background: #f5f4f0; border-radius: 12px; padding: 16px 18px; }
-  .crew-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-  .crew-emoji { font-size: 22px; }
-  .crew-name { font-size: 15px; font-weight: 500; color: #222; }
-  .crew-desc { font-size: 13px; color: #555; line-height: 2; }
-  .crew-desc img { width: 100%; border-radius: 8px; margin-top: 10px; margin-bottom: 10px; }
-  .absent { opacity: 0.5; }
-  .absent-badge { display: inline-block; font-size: 11px; color: #999; background: #ede; border-radius: 20px; padding: 2px 10px; margin-left: 6px; }
+    textarea { width: 100%; border: 1px solid #e8e8e6; border-radius: 10px; padding: 10px 12px; font-size: 14px; font-family: inherit; color: #1a1a1a; background: #fafaf9; resize: none; outline: none; line-height: 1.6; transition: border-color 0.15s; }
+    textarea:focus { border-color: #aaa; background: #fff; }
+    textarea::placeholder { color: #bbb; }
 
-  .sogang-box { background: #fffbe6; border-left: 3px solid #f0c040; border-radius: 0 10px 10px 0; padding: 12px 16px; margin-top: 10px; font-size: 13px; color: #555; line-height: 1.8; }
-  .sogang-label { font-size: 11px; font-weight: 500; color: #b8860b; margin-bottom: 4px; }
+    .sub-label { font-size: 12px; font-weight: 600; color: #555; margin: 0 0 10px; }
+    .sub-hint { font-size: 11px; color: #bbb; margin-left: 6px; font-weight: 400; }
 
-  .highlight-box { background: #f0f7f0; border-left: 3px solid #3B6D11; border-radius: 0 10px 10px 0; padding: 14px 16px; margin-bottom: 1.25rem; }
-  .highlight-label { font-size: 11px; font-weight: 500; color: #3B6D11; margin-bottom: 8px; }
-  .highlight-text { font-size: 14px; color: #333; line-height: 1.8; }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 7px; }
+    .chip { padding: 7px 14px; border: 1px solid #e8e8e6; border-radius: 20px; font-size: 13px; color: #666; background: #fff; cursor: pointer; transition: all 0.12s; font-family: inherit; }
+    .chip:hover { border-color: #bbb; }
+    .chip.on { background: #e8f0fe; color: #1a56db; border-color: #93b4fb; }
+    .chip.green.on { background: #e8f4e8; color: #2d6a2d; border-color: #8bc88b; }
+    .chip.pass.on { background: #f5f5f3; color: #aaa; border-color: #ddd; font-style: italic; }
 
-  .etc-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.25rem; }
-  .etc-item { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: #555; line-height: 1.7; padding: 10px 14px; background: #f5f4f0; border-radius: 10px; }
-  .etc-num { font-size: 11px; font-weight: 500; color: #185FA5; flex-shrink: 0; margin-top: 2px; }
+    .emo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .emo-btn { border: 1px solid #e8e8e6; border-radius: 12px; padding: 12px 6px 10px; background: #fff; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 5px; transition: all 0.12s; font-family: inherit; }
+    .emo-btn:hover { border-color: #bbb; }
+    .emo-btn.pos.on { background: #e8f0fe; border-color: #93b4fb; }
+    .emo-btn.neg.on { background: #fff4e5; border-color: #fcd07a; }
+    .emo-btn.neu.on { background: #f5f5f3; border-color: #ccc; }
+    .emo-icon { font-size: 26px; line-height: 1; }
+    .emo-label { font-size: 12px; color: #666; }
+    .emo-btn.pos.on .emo-label { color: #1a56db; }
+    .emo-btn.neg.on .emo-label { color: #b45309; }
 
-  .next-box { background: #FFF8F0; border-left: 3px solid #D85A30; border-radius: 0 10px 10px 0; padding: 14px 16px; font-size: 14px; color: #555; line-height: 1.8; }
+    .option-list { display: flex; flex-direction: column; gap: 8px; }
+    .option-btn { border: 1px solid #e8e8e6; border-radius: 10px; padding: 12px 14px; font-size: 13px; color: #444; background: #fff; cursor: pointer; text-align: left; font-family: inherit; line-height: 1.5; transition: all 0.12s; }
+    .option-btn:hover { border-color: #bbb; background: #fafaf9; }
+    .option-btn.on { background: #e8f4e8; color: #2d6a2d; border-color: #8bc88b; }
+    .option-num { font-weight: 600; margin-right: 6px; }
 
-  .footer { text-align: center; font-size: 12px; color: #bbb; padding: 2rem 0 0; }
-  .footer .heart { color: #D85A30; }
-</style>
+    .divider { border: none; border-top: 1px solid #f0f0ee; margin: 14px 0; }
+
+    .anon-note { font-size: 12px; color: #888; text-align: center; margin: 12px 0 8px; line-height: 1.6; }
+    .submit-btn { width: 100%; padding: 14px; border-radius: 12px; border: none; background: #2d6a2d; color: #fff; font-size: 15px; font-weight: 600; cursor: pointer; transition: opacity 0.12s; font-family: inherit; }
+    .submit-btn:hover { opacity: 0.85; }
+    .submit-btn:disabled { opacity: 0.4; cursor: default; }
+    .sending-msg { font-size: 13px; color: #aaa; text-align: center; margin-top: 10px; display: none; }
+    .thank-note { font-size: 13px; color: #888; text-align: center; margin-top: 10px; line-height: 1.7; }
+
+    .done-box { display: none; border: 1px solid #c8e6c8; border-radius: 14px; padding: 1.5rem; margin-top: 12px; background: #f0f7f0; text-align: center; }
+    .done-box.show { display: block; }
+    .done-icon { font-size: 40px; margin-bottom: 10px; }
+    .done-msg { font-size: 16px; font-weight: 600; color: #2d6a2d; margin-bottom: 6px; }
+    .done-note { font-size: 13px; color: #666; line-height: 1.7; }
+  </style>
 </head>
 <body>
+<div class="wrap">
 
-<div id="lock">
-  <div id="lock-box">
-    <div class="icon">🌱</div>
-    <h2>마음에서 피어나는 정원</h2>
-    <p>관계자 전용 수업 피드백입니다</p>
-    <input type="password" id="pw" placeholder="비밀번호를 입력하세요" onkeydown="if(event.key==='Enter') checkPw()">
-    <button onclick="checkPw()">확인</button>
-    <p id="err">비밀번호가 맞지 않아요</p>
-  </div>
-</div>
-
-<div id="content">
-
-  <div class="header">
-    <a class="back-btn" href="index.html">← 목록으로</a>
-    <div class="flowers">
-      <span class="flower">🎁</span>
-      <span class="flower">🌟</span>
-      <span class="flower">🌱</span>
-      <span class="flower">🍀</span>
-      <span class="flower">✨</span>
+  <div class="intro-card">
+    <div class="intro-title">🌱 함께 성장하는 기쁨을 누릴 수 있어서 참 즐거워요.</div>
+    <div class="intro-body">
+      이번 주제 <em>〈마음이 피어나는 정원〉</em> 수업은 주차별로 내 마음을 들여다 보고, 발견하고, 내가 좋아하고 행복한 지점을 찾아가고 있어요.
     </div>
-    <div class="program-tag">고립·은둔청년 미술 프로그램</div>
-    <div class="title">마음에서 피어나는 정원</div>
-    <div class="subtitle">4주차 수업 피드백 · 행복 트레이 · 2026</div>
-  </div>
-
-
-  <!-- 섹션 1. 수업 내용 요약 -->
-  <div class="section">
-    <div class="section-label">📋 수업 내용 요약</div>
-    <div class="activity-list">
-      <div class="activity-item"><div class="step-num">1</div>지점토의 효능 소개</div>
-      <div class="activity-item"><div class="step-num">2</div>3주차 작품 보수 및 컬러링 작업</div>
-      <div class="activity-item"><div class="step-num">3</div>행복으로 채우는 내용 소개</div>
-      <div class="activity-item"><div class="step-num">4</div>행복 트레이에 담을 아이템 제작 — 행복한 요소를 생각하며 트레이를 만들고, 지난 시간에 이어 컬러링 작업도 진행</div>
-      
+    <div class="intro-divider"></div>
+    <div class="intro-body">
+      내 마음을 들여다 보고 발견하고 <em>컬러로 표현</em>하고, 모난 부분은 깎아 내고, 갈라진 부분은 덧붙이고 — 다양한 방식으로 시도해보고 있어요.<br><br>
+      특히 <em>내가 뭘 좋아하고, 어떤 컬러를 좋아하고, 내가 언제 행복한지</em>에 대해 함께 생각해보고 나누고 있습니다.
+    </div>
+    <div class="intro-deadline">
+      📅 수요일까지 생각해보고 답변주세요 :D<br>
+      자유롭게 아이디어·의견 주시면 다같이 만들어 가요!
     </div>
   </div>
 
+  <div class="top-note">쓰고 싶은 것만, 쓰고 싶은 만큼. 비워도 충분해요.</div>
 
-  <!-- 섹션 2. 크루들 작품 설명 및 특징 -->
-  <div class="section">
-    <div class="section-label">🎨 크루들 작품 설명 및 특징</div>
-    <div class="crew-grid">
+  <!-- 수업 피드백 -->
+  <div class="section-title">수업 피드백</div>
 
-      <!-- 검진홍 -->
-      <div class="crew-card">
-        <div class="crew-header">
-          <div class="crew-emoji">🌀</div>
-          <div class="crew-name">검진홍</div>
-        </div>
-        <div class="crew-desc">
-          최애 영화 알라딘의 요술램프를 표현함. 원하는 소원을 들어준다는 의미.<br>
-          씽둥이와 좋아하는 포차코(강아지 캐릭터), 별을 트레이에 달았음.<br><br>
-          <div class="sogang-box">
-            <div class="sogang-label">💬 소감</div>
-            예전에 내가 좋아했던 것을 다시 할 수 있어서 좋았다.
-          </div>
-        </div>
-      </div>
+  <div class="q-card">
+    <div class="q-head"><span class="q-num">1</span><span class="q-title">오늘 수업에서 좋았던 것</span></div>
+    <div class="q-hint">아주 작은 것도 OK. 분위기, 순간, 느낌 뭐든요.</div>
+    <textarea id="q1" rows="3" placeholder="예) 손을 움직이다 보니 어느새 시간이 지나있었어요"></textarea>
+  </div>
 
-      <!-- 김도희 -->
-      <div class="crew-card">
-        <div class="crew-header">
-          <div class="crew-emoji">🌸</div>
-          <div class="crew-name">김도희</div>
-        </div>
-        <div class="crew-desc">
-          작품: 나무,. 고양이. 기본 원형<br>
-          나무의 크기는 중요하지 않고, 나무는 커가고 있다는 의미.<br> 집에가서 작업 더 할 예정.<br>
-          예전에 빼앗겼던 것을 되찾는 상황을 나무에 투영해 표현함.<br><br>
-          <div class="sogang-box">
-            <div class="sogang-label">💬 소감</div>
-            나로선 온전히 있는 시간이어서 좋았다.
-          </div>
-        </div>
-      </div>
+  <div class="q-card">
+    <div class="q-head"><span class="q-num">2</span><span class="q-title">작품 설명</span></div>
+    <div class="q-hint">어떤 마음으로 만들었는지, 어떤 의미인지 — 짧아도 돼요.</div>
+    <textarea id="q2" rows="3" placeholder="예) LIFE 콜라주를 하면서 '인생이 선물이라면'을 생각해봤어요."></textarea>
+  </div>
 
-      <!-- 박우석 -->
-      <div class="crew-card absent">
-        <div class="crew-header">
-          <div class="crew-emoji">🌿</div>
-          <div class="crew-name">박우석 <span class="absent-badge">미참석</span></div>
-        </div>
-      </div>
-
-      <!-- 박진우 -->
-      <div class="crew-card">
-        <div class="crew-header">
-          <div class="crew-emoji">♟️</div>
-          <div class="crew-name">박진우</div>
-        </div>
-        <div class="crew-desc">
-          작품: 고래 (좋아하는 애니메이션 캐릭터도 언급).<br>
-          원하는 대로 나와서 마음에 든다고 함.<br><br>
-          왜 하는지 이유를 묻는 편임 <br>
-          <div class="sogang-box">
-            <div class="sogang-label">💬 소감</div>
-            재밌다.
-          </div>
-        </div>
-      </div>
-
-      <!-- 박찬종 -->
-      <div class="crew-card">
-        <div class="crew-header">
-          <div class="crew-emoji">☀️</div>
-          <div class="crew-name">박찬종</div>
-        </div>
-        <div class="crew-desc">
-          작품: 나에게 주는 선물.<br>
-          중학교 때 미술 2등이었던 기억, 잊고 있던 부분을 다시 발견한 것 같은 느낌.<br>
-          나에게도 이런 좋았던 시간, 좋아하는 면모들이 있음을 새롭게 발견함.
-        </div>
-      </div>
-
-      <!-- 박형신 -->
-      <div class="crew-card absent">
-        <div class="crew-header">
-          <div class="crew-emoji">🪨</div>
-          <div class="crew-name">박형신 <span class="absent-badge">미참석</span></div>
-        </div>
-      </div>
-
-      <!-- 정혜인 -->
-      <div class="crew-card">
-        <div class="crew-header">
-          <div class="crew-emoji">🍃</div>
-          <div class="crew-name">정혜인</div>
-        </div>
-        <div class="crew-desc">
-          작품: 구름, 하트, 은색 달빛.<br>
-          처음엔 그냥 트레이를 만들었는데 하다 보니 구름 같아서 구름 색으로 칠함.<br>
-          셋 중에 구름이 제일 마음에 든다고 함.<br>
-          하트도 원하는 대로 테두리 길이가 잘 나와서 다행이라고 함.<br><br>
-          작업 속도가 빠른 편임<br>
-          <div class="sogang-box">
-            <div class="sogang-label">💬 소감</div>
-            내용은 잊었지만 긍정적인 느낌이었음.
-          </div>
-        </div>
-      </div>
-
+  <div class="q-card">
+    <div class="q-head"><span class="q-num">3</span><span class="q-title">오늘 이 시간, 어땠나요?</span></div>
+    <div class="q-hint">여러 개 골라도 돼요 · 안 골라도 괜찮아요</div>
+    <div class="sub-label">지금 어떤 감정이 느껴지나요?</div>
+    <div class="emo-grid" id="emo-chips">
+      <button class="emo-btn pos" onclick="tog(this)"><span class="emo-icon">😄</span><span class="emo-label">즐거워요</span></button>
+      <button class="emo-btn neg" onclick="tog(this)"><span class="emo-icon">😢</span><span class="emo-label">슬퍼요</span></button>
+      <button class="emo-btn pos" onclick="tog(this)"><span class="emo-icon">🤩</span><span class="emo-label">신나요</span></button>
+      <button class="emo-btn neg" onclick="tog(this)"><span class="emo-icon">😠</span><span class="emo-label">화나요</span></button>
+      <button class="emo-btn pos" onclick="tog(this)"><span class="emo-icon">🌱</span><span class="emo-label">기대돼요</span></button>
+      <button class="emo-btn neg" onclick="tog(this)"><span class="emo-icon">😮‍💨</span><span class="emo-label">지쳐요</span></button>
+      <button class="emo-btn pos" onclick="tog(this)"><span class="emo-icon">😌</span><span class="emo-label">편안해요</span></button>
+      <button class="emo-btn neg" onclick="tog(this)"><span class="emo-icon">😟</span><span class="emo-label">불안해요</span></button>
+      <button class="emo-btn neu" onclick="tog(this)"><span class="emo-icon">😶</span><span class="emo-label">잘 모르겠어요</span></button>
+    </div>
+    <div class="divider"></div>
+    <div class="sub-label">수업 전후 기분이 달라졌나요?</div>
+    <div class="chip-row" id="mood-chips">
+      <button class="chip" onclick="tog(this)">조금 가벼워졌어요</button>
+      <button class="chip" onclick="tog(this)">비슷해요</button>
+      <button class="chip" onclick="tog(this)">오히려 더 무거워요</button>
+      <button class="chip" onclick="tog(this)">잘 모르겠어요</button>
+    </div>
+    <div class="divider"></div>
+    <div class="sub-label">나 혼자가 아니라는 느낌이 들었나요?</div>
+    <div class="chip-row" id="alone-chips">
+      <button class="chip" onclick="tog(this)">조금 들었어요</button>
+      <button class="chip" onclick="tog(this)">꽤 들었어요</button>
+      <button class="chip" onclick="tog(this)">별로 안 들었어요</button>
+      <button class="chip" onclick="tog(this)">잘 모르겠어요</button>
     </div>
   </div>
 
-
-  <!-- 섹션 3. 기타 -->
-  <div class="section">
-    <div class="section-label">📌 기타</div>
-
-    <div class="highlight-box">
-      <div class="highlight-label">✦ 오늘의 인상적인 순간</div>
-      <div class="highlight-text">
-        <strong>1) 검진홍</strong><br>
-        전보다 얼굴이 밝아짐. 음악 볼륨 조절이 안 되자 먼저 나서서 리모컨으로 도와줌 — 적극성이 눈에 띄게 높아졌음.<br>
-        물감 통을 열다 한가득 나왔을 때 당황했지만, 다시 담는 법을 알려주자 금세 평정을 찾고 마무리해 나감.<br><br>
-        <strong>2) 박찬종 · 정혜인</strong><br>
-        수업 전후로 조용히, 섬세하게 서포트해 줌. 전보다 수업을 더 즐기는 느낌.<br><br>
-        <strong>3) 전체</strong><br>
-        서로의 작품을 진정으로 경청하는 모습이 인상적이었음. 콜라주 때와 마찬가지로 쉬는 시간을 반납하고 몰두해서 작업함.
-      </div>
+  <div class="q-card">
+    <div class="q-head"><span class="q-num">4</span><span class="q-title">이번 주 내가 해볼 수 있는 작은 첫 걸음</span></div>
+    <div class="q-hint">여러 개 골라도 돼요</div>
+    <div class="chip-row" style="margin-bottom:10px;" id="step-chips">
+      <button class="chip" onclick="tog(this)">물 한 잔 마시기</button>
+      <button class="chip" onclick="tog(this)">창문 열기</button>
+      <button class="chip" onclick="tog(this)">음악 한 곡 듣기</button>
+      <button class="chip" onclick="tog(this)">밥 챙겨 먹기</button>
+      <button class="chip" onclick="tog(this)">잠깐 밖에 나가기</button>
+      <button class="chip" onclick="tog(this)">오늘 느낌 한 줄 쓰기</button>
+      <button class="chip pass" onclick="togPass(this)" id="pass-btn">오늘은 잠깐 패스</button>
     </div>
-
-    <div class="etc-list">
-      <div class="etc-item"><span class="etc-num">1</span>수업 커리큘럼을 대폭 줄이고 1회차를 2회차에 걸쳐 진행하니 속도가 맞음.</div>
-      <div class="etc-item"><span class="etc-num">2</span>속도 변화로 인해 전시회 때 작업할 작품과 시간에 대한 고민이 생김.</div>
-      <div class="etc-item"><span class="etc-num">3</span>
-        전시회 프레임 고민 중:<br>
-        ① 캔버스천으로 거는 형태<br>
-        ② 현재 캔버스 10호를 나란히 붙이는 형태<br>
-        ③ 투명 필름 두꺼운 판에 레이어드 하는 방식<br>
-        ④ 30호~50호 캔버스 1개 구매하는 형태
-      </div>
-      <div class="etc-item"><span class="etc-num">4</span>수업 전과 중간에 1분 정도 영상을 보여주는데 환기가 되는 분위기.</div>
-      <div class="etc-item"><span class="etc-num">5</span>박반장 워크북 진행 안 함. 지점토 특성상 손에 묻는 게 많아서 일찍 마무리.</div>
-    </div>
-
-    <!-- 다음 주 안내 -->
-    <div class="highlight-box" style="background:#f0f0ff; border-color:#5555cc;">
-      <div class="highlight-label" style="color:#5555cc;">📅 다음 주 예고</div>
-      <div class="highlight-text">
-        행복 레시피 만드는 법 — 디저트 전문가 (라피드몽) 초빙 예정.<br>
-        실제 미니 케이크를 만들려 했으나 크루들이 그림 케이크를 더 원해서 원래대로 진행할 예정.
-      </div>
-    </div>
+    <textarea id="q4" rows="2" placeholder="다른 게 있으면 여기에..."></textarea>
   </div>
 
-
-  <!-- 섹션 4. 다음을 위한 한 걸음 -->
-  <div class="section">
-    <div class="section-label">👣 다음을 위한 한 걸음</div>
-    <div class="next-box">
-      행복 레시피 케이크 만들 예정 🎂
-    </div>
+  <div class="q-card">
+    <div class="q-head"><span class="q-num">5</span><span class="q-title">오늘의 바람</span></div>
+    <div class="q-hint">나에게, 선생님에게, 혹은 그냥 — 어디로 보내는 말이어도 돼요.</div>
+    <textarea id="q5" rows="3" placeholder="예) 그냥 또 와봐야겠다 / 잘 모르겠지만 괜찮았으면"></textarea>
   </div>
 
+  <!-- 전시회 -->
+  <div class="section-title">전시회 의견</div>
 
-  <div class="footer">함께해 주셔서 감사합니다 <span class="heart">♥</span><br>다음 주에도 함께 정원을 가꾸겠습니다 🌱</div>
+  <div class="q-card">
+    <div class="q-head"><span class="q-num">6</span><span class="q-tag">전시회</span><span class="q-title">해보고 싶은 스타일</span></div>
+    <div class="q-desc">1~5주차에서 즐거웠던 방식, 또는 해보고 싶은 방식을 골라주세요. 여러 개 가능해요!</div>
+    <div class="chip-row" id="style-chips">
+      <button class="chip green" onclick="tog(this)">✏️ 스케치</button>
+      <button class="chip green" onclick="tog(this)">🎨 아크릴 물감</button>
+      <button class="chip green" onclick="tog(this)">🎂 케익 방식 (마띠에르)</button>
+      <button class="chip green" onclick="tog(this)">🌿 지점토</button>
+      <button class="chip green" onclick="tog(this)">기타</button>
+    </div>
+    <textarea id="q6-other" rows="2" placeholder="기타 아이디어가 있다면..." style="margin-top:10px;"></textarea>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head"><span class="q-num">7</span><span class="q-tag">전시회</span><span class="q-title">함께 만들 작품 형태</span></div>
+    <div class="q-desc">나를 미소짓게 하는 리스트들을 계속 생각해본 후, 그 내용을 정원에 넣을 예정이에요.</div>
+    <div class="option-list" id="form-options">
+      <button class="option-btn" onclick="selOption(this,'form-options')"><span class="option-num">①</span>다같이 분할된 캔버스 전체를 돌아가며 만들기</button>
+      <button class="option-btn" onclick="selOption(this,'form-options')"><span class="option-num">②</span>대형 캔버스 1개에 그리기</button>
+      <button class="option-btn" onclick="selOption(this,'form-options')"><span class="option-num">③</span>각자의 캔버스에 원하는 내용 그리기</button>
+    </div>
+    <textarea id="q7-other" rows="2" placeholder="다른 아이디어나 이유가 있다면..." style="margin-top:10px;"></textarea>
+  </div>
+
+  <div class="q-card">
+    <div class="q-head"><span class="q-num">8</span><span class="q-tag">전시회</span><span class="q-title">공동작업을 위해 서로를 알려주세요</span></div>
+    <div class="q-hint">편하게 답해주세요 — 더 좋은 함께를 만들기 위한 질문이에요.</div>
+
+    <div class="sub-label">① 이런 상황이 힘들어요 <span class="sub-hint">해당하는 것 모두 체크</span></div>
+    <div class="chip-row" id="hard-chips" style="margin-bottom:18px;">
+      <button class="chip" onclick="tog(this)">작업물이 비교될 때</button>
+      <button class="chip" onclick="tog(this)">시간 압박이 있을 때</button>
+      <button class="chip" onclick="tog(this)">완벽하게 해야 한다는 생각이 들 때</button>
+      <button class="chip" onclick="tog(this)">분위기가 불편할 때</button>
+      <button class="chip" onclick="tog(this)">내 의견이 무시당하는 것 같을 때</button>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="sub-label">② 작업할 때 이런 편이에요 <span class="sub-hint">하나 선택</span></div>
+    <div class="option-list" id="work-style" style="margin-bottom:18px;">
+      <button class="option-btn" onclick="selOption(this,'work-style')"><span class="option-num">·</span>방향이 정해져 있는 게 좋다</button>
+      <button class="option-btn" onclick="selOption(this,'work-style')"><span class="option-num">·</span>자유롭게 알아서 하는 게 좋다</button>
+      <button class="option-btn" onclick="selOption(this,'work-style')"><span class="option-num">·</span>둘 다 상관없다</button>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="sub-label">③ 협업할 때 이게 있으면 좋아요 <span class="sub-hint">하나 선택</span></div>
+    <div class="option-list" id="collab-style" style="margin-bottom:18px;">
+      <button class="option-btn" onclick="selOption(this,'collab-style')"><span class="option-num">·</span>역할이 명확하게 나뉘어 있으면 좋다</button>
+      <button class="option-btn" onclick="selOption(this,'collab-style')"><span class="option-num">·</span>중간중간 같이 이야기하면서 맞춰가는 게 좋다</button>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="sub-label">④ 자유롭게 한 마디</div>
+    <textarea id="q8-free" rows="3" placeholder="무엇이든 편하게 써주세요."></textarea>
+  </div>
+
+  <p class="anon-note">🔒 익명으로 진행되니 안심하고 편하게 작성해 주세요.</p>
+  <button class="submit-btn" id="submit-btn" onclick="submit()">제출하기 🌱</button>
+  <p class="thank-note">내용 작성해주셔서 감사합니다.</p>
+  <p class="sending-msg" id="sending-msg">전송 중이에요...</p>
+
+  <div class="done-box" id="done-box">
+    <div class="done-icon">🌸</div>
+    <div class="done-msg">소중한 의견 고마워요!</div>
+    <p class="done-note">수요일까지 모아서 함께 준비할게요.<br>다음 수업 때 봐요 :D</p>
+  </div>
 
 </div>
 
 <script>
-  /* ✏️ 비밀번호를 여기서 바꾸세요 */
-  var PASSWORD = "2580*";
-  function checkPw() {
-    if (document.getElementById('pw').value === PASSWORD) {
-      document.getElementById('lock').style.display = 'none';
-      document.getElementById('content').style.display = 'block';
-    } else {
-      document.getElementById('err').style.display = 'block';
+  // ✏️ Google Apps Script 배포 URL을 여기에 붙여넣으세요
+  const SCRIPT_URL = 'YOUR_SCRIPT_URL_HERE';
+
+  function tog(el) { el.classList.toggle('on'); }
+
+  function selOption(el, groupId) {
+    document.querySelectorAll('#' + groupId + ' .option-btn').forEach(b => b.classList.remove('on'));
+    el.classList.add('on');
+  }
+
+  function togPass(el) {
+    if (!el.classList.contains('on')) {
+      document.querySelectorAll('#step-chips .chip:not(.pass)').forEach(b => b.classList.remove('on'));
+      el.classList.add('on');
+    } else { el.classList.remove('on'); }
+  }
+
+  document.querySelectorAll('#step-chips .chip:not(.pass)').forEach(b => {
+    b.addEventListener('click', () => document.getElementById('pass-btn').classList.remove('on'));
+  });
+
+  function getChips(id) {
+    return [...document.querySelectorAll('#' + id + ' .chip.on, #' + id + ' .emo-btn.on')].map(b => {
+      const label = b.querySelector('.emo-label');
+      return label ? label.textContent.trim() : b.textContent.trim();
+    }).join(', ');
+  }
+
+  function getOption(groupId) {
+    const sel = document.querySelector('#' + groupId + ' .option-btn.on');
+    return sel ? sel.textContent.trim().replace(/^[·①②③]\s*/, '') : '';
+  }
+
+  async function submit() {
+    const payload = {
+      q1: document.getElementById('q1').value.trim(),
+      q2: document.getElementById('q2').value.trim(),
+      emotions: getChips('emo-chips'),
+      mood: getChips('mood-chips'),
+      alone: getChips('alone-chips'),
+      step: [getChips('step-chips'), document.getElementById('q4').value.trim()].filter(Boolean).join(' / '),
+      q5: document.getElementById('q5').value.trim(),
+      style: [getChips('style-chips'), document.getElementById('q6-other').value.trim()].filter(Boolean).join(' / '),
+      artwork_form: [getOption('form-options'), document.getElementById('q7-other').value.trim()].filter(Boolean).join(' / '),
+      hard_situations: getChips('hard-chips'),
+      work_style: getOption('work-style'),
+      collab_style: getOption('collab-style'),
+      free_comment: document.getElementById('q8-free').value.trim()
+    };
+
+    const btn = document.getElementById('submit-btn');
+    const sending = document.getElementById('sending-msg');
+    btn.disabled = true;
+    sending.style.display = 'block';
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      console.log('전송 완료');
     }
+
+    sending.style.display = 'none';
+    document.getElementById('done-box').classList.add('show');
+    document.getElementById('done-box').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 </script>
 </body>
