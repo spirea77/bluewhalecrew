@@ -1,255 +1,236 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>오늘 이 시간 — 수업 후 기록</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #f5f5f3; color: #1a1a1a;
-      min-height: 100vh; padding: 2rem 1rem 4rem;
-    }
-    .wrap { max-width: 560px; margin: 0 auto; }
-    header { margin-bottom: 2rem; }
-    header h1 { font-size: 20px; font-weight: 600; margin-bottom: 6px; }
-    header p { font-size: 13px; color: #888; line-height: 1.6; }
-    .top-note {
-      font-size: 13px; color: #888; margin-bottom: 1.5rem;
-      padding: 10px 14px; background: #efefed;
-      border-radius: 10px; border-left: 2px solid #ccc; line-height: 1.6;
-    }
-    .q-card {
-      background: #fff; border: 1px solid #e8e8e6;
-      border-radius: 14px; padding: 1.25rem; margin-bottom: 12px;
-    }
-    .q-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
-    .q-num {
-      font-size: 11px; font-weight: 600; color: #aaa;
-      background: #f5f5f3; padding: 2px 7px; border-radius: 20px; flex-shrink: 0;
-    }
-    .q-title { font-size: 15px; font-weight: 600; color: #1a1a1a; line-height: 1.5; }
-    .q-hint { font-size: 12px; color: #aaa; margin: 4px 0 14px; line-height: 1.5; }
-    textarea {
-      width: 100%; border: 1px solid #e8e8e6; border-radius: 10px;
-      padding: 10px 12px; font-size: 14px; font-family: inherit;
-      color: #1a1a1a; background: #fafaf9; resize: none; outline: none;
-      line-height: 1.6; transition: border-color 0.15s;
-    }
-    textarea:focus { border-color: #aaa; background: #fff; }
-    textarea::placeholder { color: #bbb; }
-    .sub-label { font-size: 12px; font-weight: 600; color: #555; margin: 0 0 10px; }
-    .chip-row { display: flex; flex-wrap: wrap; gap: 7px; }
-    .chip {
-      padding: 7px 14px; border: 1px solid #e8e8e6; border-radius: 20px;
-      font-size: 13px; color: #666; background: #fff; cursor: pointer;
-      transition: all 0.12s; font-family: inherit;
-    }
-    .chip:hover { border-color: #bbb; }
-    .chip.on { background: #e8f0fe; color: #1a56db; border-color: #93b4fb; }
-    .chip.pass.on { background: #f5f5f3; color: #aaa; border-color: #ddd; font-style: italic; }
-    .emo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .emo-btn {
-      border: 1px solid #e8e8e6; border-radius: 12px;
-      padding: 12px 6px 10px; background: #fff; cursor: pointer;
-      display: flex; flex-direction: column; align-items: center; gap: 5px;
-      transition: all 0.12s; font-family: inherit;
-    }
-    .emo-btn:hover { border-color: #bbb; }
-    .emo-btn.pos.on { background: #e8f0fe; border-color: #93b4fb; }
-    .emo-btn.neg.on { background: #fff4e5; border-color: #fcd07a; }
-    .emo-btn.neu.on { background: #f5f5f3; border-color: #ccc; }
-    .emo-icon { font-size: 26px; line-height: 1; }
-    .emo-label { font-size: 12px; color: #666; }
-    .emo-btn.pos.on .emo-label { color: #1a56db; }
-    .emo-btn.neg.on .emo-label { color: #b45309; }
-    .divider { border: none; border-top: 1px solid #f0f0ee; margin: 14px 0; }
-    .submit-btn {
-      width: 100%; padding: 14px; border-radius: 12px;
-      border: 1px solid #ddd; background: #f5f5f3; color: #1a1a1a;
-      font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 4px;
-      transition: all 0.12s; font-family: inherit;
-    }
-    .submit-btn:hover { background: #e8f0fe; color: #1a56db; border-color: #93b4fb; }
-    .submit-btn:disabled { opacity: 0.5; cursor: default; }
-    .done-box {
-      display: none; border: 1px solid #e8e8e6; border-radius: 14px;
-      padding: 1.5rem; margin-top: 12px; background: #f9f9f8; text-align: center;
-    }
-    .done-box.show { display: block; }
-    .done-icon { font-size: 40px; margin-bottom: 10px; }
-    .done-msg { font-size: 16px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; }
-    .done-note { font-size: 13px; color: #aaa; line-height: 1.7; }
-    .sending-msg { font-size: 13px; color: #aaa; text-align: center; margin-top: 10px; display: none; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>마음에서 피어나는 정원 — 5주차</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans KR', sans-serif; background: #faf9f6; color: #222; min-height: 100vh; }
 
-    /* ⚠️ 설정 배너 */
-    .setup-banner {
-      background: #fff4e5; border: 1px solid #fcd07a; border-radius: 10px;
-      padding: 12px 14px; margin-bottom: 1.5rem; font-size: 13px;
-      color: #92400e; line-height: 1.6; display: none;
-    }
-    .setup-banner.show { display: block; }
-  </style>
+  #lock { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 2rem; }
+  #lock-box { background: #fff; border-radius: 20px; border: 0.5px solid #e0ddd5; padding: 2.5rem 2rem; width: 100%; max-width: 360px; text-align: center; }
+  #lock-box .icon { font-size: 36px; margin-bottom: 1rem; }
+  #lock-box h2 { font-family: 'Gowun Batang', serif; font-size: 20px; margin-bottom: 6px; }
+  #lock-box p { font-size: 13px; color: #999; margin-bottom: 1.5rem; }
+  #lock-box input { width: 100%; padding: 11px 14px; border: 0.5px solid #ccc; border-radius: 10px; font-size: 15px; text-align: center; margin-bottom: 12px; font-family: 'Noto Sans KR', sans-serif; }
+  #lock-box input:focus { outline: none; border-color: #888; }
+  #lock-box button { width: 100%; padding: 12px; background: #222; color: #fff; border: none; border-radius: 10px; font-size: 15px; font-family: 'Noto Sans KR', sans-serif; cursor: pointer; }
+  #lock-box button:hover { background: #444; }
+  #err { color: #c0392b; font-size: 12px; margin-top: 10px; display: none; }
+
+  #content { display: none; max-width: 680px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+  .header { text-align: center; padding: 2.5rem 1rem 2rem; border-bottom: 0.5px solid #e8e5dc; margin-bottom: 2rem; }
+  .flowers { display: flex; justify-content: center; gap: 8px; margin-bottom: 1rem; }
+  .flower { font-size: 22px; animation: sway 3s ease-in-out infinite; }
+  .flower:nth-child(2) { animation-delay: 0.3s; }
+  .flower:nth-child(3) { animation-delay: 0.6s; }
+  .flower:nth-child(4) { animation-delay: 0.9s; }
+  .flower:nth-child(5) { animation-delay: 1.2s; }
+  @keyframes sway { 0%, 100% { transform: rotate(-5deg) translateY(0); } 50% { transform: rotate(5deg) translateY(-4px); } }
+  .program-tag { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; color: #185FA5; background: #E6F1FB; border-radius: 20px; padding: 3px 14px; margin-bottom: 14px; }
+  .title { font-family: 'Gowun Batang', serif; font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+  .subtitle { font-size: 13px; color: #999; }
+  .back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #888; text-decoration: none; margin-bottom: 1.5rem; }
+  .back-btn:hover { color: #333; }
+
+  .section { padding: 1.75rem 0; border-bottom: 0.5px solid #e8e5dc; }
+  .section:last-child { border-bottom: none; }
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #aaa; margin-bottom: 1rem; display: flex; align-items: center; gap: 6px; }
+
+  /* 결석 현황 */
+  .absent-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1rem; }
+  .absent-tag { display: flex; align-items: center; gap: 6px; background: #f5f4f0; border: 0.5px solid #e8e5dc; border-radius: 20px; padding: 6px 12px; font-size: 12px; color: #555; }
+  .absent-reason { font-size: 11px; color: #999; }
+
+  /* 변경 안내 */
+  .change-box { background: #fff8e6; border-left: 3px solid #f0a500; border-radius: 0 10px 10px 0; padding: 14px 16px; font-size: 13px; color: #555; line-height: 1.8; }
+  .change-label { font-size: 11px; font-weight: 500; color: #b07000; margin-bottom: 6px; }
+
+  /* 크루 카드 */
+  .crew-grid { display: flex; flex-direction: column; gap: 12px; }
+  .crew-card { background: #f5f4f0; border-radius: 12px; padding: 16px 18px; }
+  .crew-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .crew-emoji { font-size: 22px; }
+  .crew-name { font-size: 15px; font-weight: 500; color: #222; }
+  .crew-desc { font-size: 13px; color: #555; line-height: 2; }
+  .crew-desc img { width: 100%; border-radius: 8px; margin-top: 10px; margin-bottom: 10px; }
+  .notice-tag { display: inline-block; font-size: 11px; color: #c0392b; background: #fdecea; border-radius: 20px; padding: 2px 10px; margin-left: 6px; }
+
+  .highlight-box { background: #f0f7f0; border-left: 3px solid #3B6D11; border-radius: 0 10px 10px 0; padding: 14px 16px; margin-bottom: 1.25rem; }
+  .highlight-label { font-size: 11px; font-weight: 500; color: #3B6D11; margin-bottom: 8px; }
+  .highlight-text { font-size: 14px; color: #333; line-height: 1.8; }
+
+  .etc-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.25rem; }
+  .etc-item { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: #555; line-height: 1.7; padding: 10px 14px; background: #f5f4f0; border-radius: 10px; }
+  .etc-num { font-size: 11px; font-weight: 500; color: #185FA5; flex-shrink: 0; margin-top: 2px; }
+
+  .next-box { background: #FFF8F0; border-left: 3px solid #D85A30; border-radius: 0 10px 10px 0; padding: 14px 16px; font-size: 14px; color: #555; line-height: 1.8; }
+  .footer { text-align: center; font-size: 12px; color: #bbb; padding: 2rem 0 0; }
+  .footer .heart { color: #D85A30; }
+</style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <h1>오늘 이 시간 🌱</h1>
-    <p>수업 후 기록</p>
-  </header>
 
-  <!-- 스크립트 URL 미설정 시 안내 -->
-  <div class="setup-banner" id="setup-banner">
-    ⚠️ 아직 Google Sheets 연결이 설정되지 않았어요.<br>
-    <code>index.html</code> 안의 <strong>SCRIPT_URL</strong>을 바꿔주세요.
-  </div>
-
-  <div class="top-note">쓰고 싶은 것만, 쓰고 싶은 만큼. 비워도 충분해요.</div>
-
-  <!-- Q1 -->
-  <div class="q-card">
-    <div class="q-head"><span class="q-num">1</span><span class="q-title">오늘 수업에서 좋았던 것</span></div>
-    <div class="q-hint">아주 작은 것도 OK. 분위기, 순간, 느낌 뭐든요.</div>
-    <textarea id="q1" rows="3" placeholder="예) 손을 움직이다 보니 어느새 시간이 지나있었어요"></textarea>
-  </div>
-
-  <!-- Q2 -->
-  <div class="q-card">
-    <div class="q-head"><span class="q-num">2</span><span class="q-title">작품 설명</span></div>
-    <div class="q-hint">어떤 마음으로 만들었는지, 어떤 의미인지 — 짧아도 돼요.</div>
-    <textarea id="q2" rows="3" placeholder="예) LIFE 콜라주를 하면서 '인생이 선물이라면'을 생각해봤어요."></textarea>
-  </div>
-
-  <!-- Q3 -->
-  <div class="q-card">
-    <div class="q-head"><span class="q-num">3</span><span class="q-title">오늘 이 시간, 어땠나요?</span></div>
-    <div class="q-hint">여러 개 골라도 돼요 · 안 골라도 괜찮아요</div>
-
-    <div class="sub-label">지금 어떤 감정이 느껴지나요?</div>
-    <div class="emo-grid" id="emo-chips">
-      <button class="emo-btn pos" onclick="tog(this)"><span class="emo-icon">😄</span><span class="emo-label">즐거워요</span></button>
-      <button class="emo-btn neg" onclick="tog(this)"><span class="emo-icon">😢</span><span class="emo-label">슬퍼요</span></button>
-      <button class="emo-btn pos" onclick="tog(this)"><span class="emo-icon">🤩</span><span class="emo-label">신나요</span></button>
-      <button class="emo-btn neg" onclick="tog(this)"><span class="emo-icon">😠</span><span class="emo-label">화나요</span></button>
-      <button class="emo-btn pos" onclick="tog(this)"><span class="emo-icon">🌱</span><span class="emo-label">기대돼요</span></button>
-      <button class="emo-btn neg" onclick="tog(this)"><span class="emo-icon">😮‍💨</span><span class="emo-label">지쳐요</span></button>
-      <button class="emo-btn pos" onclick="tog(this)"><span class="emo-icon">😌</span><span class="emo-label">편안해요</span></button>
-      <button class="emo-btn neg" onclick="tog(this)"><span class="emo-icon">😟</span><span class="emo-label">불안해요</span></button>
-      <button class="emo-btn neu" onclick="tog(this)"><span class="emo-icon">😶</span><span class="emo-label">잘 모르겠어요</span></button>
-    </div>
-
-    <div class="divider"></div>
-    <div class="sub-label">수업 전후 기분이 달라졌나요?</div>
-    <div class="chip-row" id="mood-chips">
-      <button class="chip" onclick="tog(this)">조금 가벼워졌어요</button>
-      <button class="chip" onclick="tog(this)">비슷해요</button>
-      <button class="chip" onclick="tog(this)">오히려 더 무거워요</button>
-      <button class="chip" onclick="tog(this)">잘 모르겠어요</button>
-    </div>
-
-    <div class="divider"></div>
-    <div class="sub-label">나 혼자가 아니라는 느낌이 들었나요?</div>
-    <div class="chip-row" id="alone-chips">
-      <button class="chip" onclick="tog(this)">조금 들었어요</button>
-      <button class="chip" onclick="tog(this)">꽤 들었어요</button>
-      <button class="chip" onclick="tog(this)">별로 안 들었어요</button>
-      <button class="chip" onclick="tog(this)">잘 모르겠어요</button>
-    </div>
-  </div>
-
-  <!-- Q4 -->
-  <div class="q-card">
-    <div class="q-head"><span class="q-num">4</span><span class="q-title">이번 주 내가 해볼 수 있는 작은 첫 걸음</span></div>
-    <div class="q-hint">여러 개 골라도 돼요</div>
-    <div class="chip-row" style="margin-bottom:10px;" id="step-chips">
-      <button class="chip" onclick="tog(this)">물 한 잔 마시기</button>
-      <button class="chip" onclick="tog(this)">창문 열기</button>
-      <button class="chip" onclick="tog(this)">음악 한 곡 듣기</button>
-      <button class="chip" onclick="tog(this)">밥 챙겨 먹기</button>
-      <button class="chip" onclick="tog(this)">잠깐 밖에 나가기</button>
-      <button class="chip" onclick="tog(this)">오늘 느낌 한 줄 쓰기</button>
-      <button class="chip pass" onclick="togPass(this)" id="pass-btn">오늘은 잠깐 패스</button>
-    </div>
-    <textarea id="q4" rows="2" placeholder="다른 게 있으면 여기에..."></textarea>
-  </div>
-
-  <!-- Q5 -->
-  <div class="q-card">
-    <div class="q-head"><span class="q-num">5</span><span class="q-title">오늘의 바람</span></div>
-    <div class="q-hint">나에게, 선생님에게, 혹은 그냥 — 어디로 보내는 말이어도 돼요.</div>
-    <textarea id="q5" rows="3" placeholder="예) 그냥 또 와봐야겠다 / 잘 모르겠지만 괜찮았으면"></textarea>
-  </div>
-
-  <button class="submit-btn" id="submit-btn" onclick="submit()">제출하기</button>
-  <p class="sending-msg" id="sending-msg">전송 중이에요...</p>
-
-  <div class="done-box" id="done-box">
-    <div class="done-icon">🌿</div>
-    <div class="done-msg">기록됐어요</div>
-    <p class="done-note">오늘 여기까지 써줬으니 충분해요.<br>다음 수업 때 봐요.</p>
+<div id="lock">
+  <div id="lock-box">
+    <div class="icon">🌱</div>
+    <h2>마음에서 피어나는 정원</h2>
+    <p>관계자 전용 수업 피드백입니다</p>
+    <input type="password" id="pw" placeholder="비밀번호를 입력하세요" onkeydown="if(event.key==='Enter') checkPw()">
+    <button onclick="checkPw()">확인</button>
+    <p id="err">비밀번호가 맞지 않아요</p>
   </div>
 </div>
 
+<div id="content">
+
+  <div class="header">
+    <a class="back-btn" href="index.html">← 목록으로</a>
+    <div class="flowers">
+      <span class="flower">🎂</span>
+      <span class="flower">🍰</span>
+      <span class="flower">🌱</span>
+      <span class="flower">✨</span>
+      <span class="flower">🍀</span>
+    </div>
+    <div class="program-tag">고립·은둔청년 미술 프로그램</div>
+    <div class="title">마음에서 피어나는 정원</div>
+    <div class="subtitle">5주차 수업 피드백 · 행복 디저트 · 2025</div>
+  </div>
+
+
+  <!-- 섹션 1. 수업 운영 현황 -->
+  <div class="section">
+    <div class="section-label">📋 수업 운영 현황</div>
+
+    <div style="font-size:12px; color:#aaa; margin-bottom:8px;">결석 / 부분 참석</div>
+    <div class="absent-list">
+      <div class="absent-tag">🌀 검진홍 <span class="absent-reason">진료 일정</span></div>
+      <div class="absent-tag">🌸 김도희 <span class="absent-reason">불참</span></div>
+      <div class="absent-tag">🌿 박우석 <span class="absent-reason">불참</span></div>
+    </div>
+
+    <div class="change-box" style="margin-top:12px;">
+      <div class="change-label">📝 수업 내용 변경 사항</div>
+      원래 '행복 디저트 만들기'만 진행 예정이었으나, 찬종의 중간 이동으로 달항아리 수업을 추가 편성.<br>
+      지점토를 안 한 사람을 위해 준비한 달항아리였으며, 찬종이 모델링 페이스트 감각을 익힌 후 이동하도록 함.
+    </div>
+  </div>
+
+
+  <!-- 섹션 2. 크루들 작품 설명 및 특징 -->
+  <div class="section">
+    <div class="section-label">🎨 크루들 작품 설명 및 특징</div>
+    <div class="crew-grid">
+
+      <!-- 박진우 -->
+      <div class="crew-card">
+        <div class="crew-header">
+          <div class="crew-emoji">♟️</div>
+          <div class="crew-name">박진우</div>
+        </div>
+        <div class="crew-desc">
+          달항아리 작업 시 스스로 물감을 혼색하여 시도함.<br>
+          케이크 형태 예시를 제공했으나 캐릭터 케이크 방식으로 진행.<br>
+          AI 이미지를 참고해 구현했으며 본인이 만족한다고 말함.
+        </div>
+      </div>
+
+      <!-- 박찬종 -->
+      <div class="crew-card">
+        <div class="crew-header">
+          <div class="crew-emoji">☀️</div>
+          <div class="crew-name">박찬종 <span class="notice-tag">중간 이동</span></div>
+        </div>
+        <div class="crew-desc">
+          두께와 점도 조절 방법을 파악함.<br>
+          나이프 작업 시 빠르게 진행해 원하는 형태가 나오지 않음 → 천천히 해도 괜찮다고 안내함.<br>
+          수업 전 준비를 도와줌.<br>
+          다음 주 불참 예정 (아르바이트 면접). 이후 수업 참여 여부는 일정에 따라 미정.<br>
+          전시회 방향은 다수 의견을 따르겠다고 말함.
+        </div>
+      </div>
+
+      <!-- 박형신 -->
+      <div class="crew-card">
+        <div class="crew-header">
+          <div class="crew-emoji">🪨</div>
+          <div class="crew-name">박형신</div>
+        </div>
+        <div class="crew-desc">
+          저번 주 불참 사유: 컨디션 난조.<br>
+          이전보다 색 선택의 범위가 넓어지고 작업 속도가 빨라짐.<br>
+          작업을 계속하는 과정에서 실수가 늘어남.<br>
+          처음 시작할 때 주저함이 있었으며, 틀을 제시하면 그 안에서 진행하는 속도가 빠름.
+        </div>
+      </div>
+
+      <!-- 정혜인 -->
+      <div class="crew-card">
+        <div class="crew-header">
+          <div class="crew-emoji">🍃</div>
+          <div class="crew-name">정혜인</div>
+        </div>
+        <div class="crew-desc">
+          수업 전 바니쉬 작업을 다른 학생들 몫까지 도와 전체 진행이 빠르게 마무리됨.<br>
+          케이크 · 짤주머니를 처음 사용했으며 완성도 높은 형태를 구현해냄.<br>
+          본인이 만드는 것을 좋아한다고 말함.<br>
+          달항아리 작업 시 이전보다 속도를 줄여 작업함 — 잘 만들고 싶어서라고 함.<br>
+          점도 조절 방법을 빠르게 파악함.<br>
+          중간에 백드롭 페인팅도 추가 진행.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- 섹션 3. 기타 -->
+  <div class="section">
+    <div class="section-label">📌 기타</div>
+
+    <div class="highlight-box">
+      <div class="highlight-label">✦ 오늘의 인상적인 순간</div>
+      <div class="highlight-text">
+        <strong>1) 박형신</strong><br>
+        실수를 했는데 그 위에 부자재를 뿌리자 환하게 웃으며 미소 짓던 장면.<br><br>
+        <strong>2) 정혜인</strong><br>
+        본인 것뿐만 아니라 다른 사람들 것도 챙겨줌 — 스프레이 뿌리거나 물품을 찾을 때 먼저 신경 써줌.<br><br>
+        <strong>3) 전체</strong><br>
+        모두 재미있다고 말해줌.<br><br>
+        <strong>4) 운영 메모</strong><br>
+        물성에 의해 마르는 속도가 달라 최대한 다음 시간으로 이어지지 않는 형식을 택하는 중.<br>
+        중간에 이동하는 사람이 작품을 두고 갈 경우 미과제로 남겨지는 부분도 고려 중.
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 섹션 4. 다음을 위한 한 걸음 -->
+  <div class="section">
+    <div class="section-label">👣 다음을 위한 한 걸음</div>
+    <div class="next-box">
+      🖼️ 전시회 준비 관련 논의 예정
+    </div>
+  </div>
+
+
+  <div class="footer">함께해 주셔서 감사합니다 <span class="heart">♥</span><br>다음 주에도 함께 정원을 가꾸겠습니다 🌱</div>
+
+</div>
+
 <script>
-  //
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyZDwyifKLTODa2OTQQRtXla7A0Qi5_Vx98VktVwEZT7di_FECe1oHZDqIjNRHL-vg/exec';
-
-  // URL 미설정 시 안내 표시
-  if (SCRIPT_URL === 'https://spirea77.github.io/bluewhale') {
-    document.getElementById('setup-banner').classList.add('show');
-  }
-
-  function tog(el) { el.classList.toggle('on'); }
-
-  function togPass(el) {
-    if (!el.classList.contains('on')) {
-      document.querySelectorAll('#step-chips .chip:not(.pass)').forEach(b => b.classList.remove('on'));
-      el.classList.add('on');
-    } else { el.classList.remove('on'); }
-  }
-
-  document.querySelectorAll('#step-chips .chip:not(.pass)').forEach(b => {
-    b.addEventListener('click', () => document.getElementById('pass-btn').classList.remove('on'));
-  });
-
-  function getChips(id) {
-    return [...document.querySelectorAll(`#${id} .chip.on, #${id} .emo-btn.on`)].map(b => {
-      const label = b.querySelector('.emo-label');
-      return label ? label.textContent.trim() : b.textContent.trim();
-    }).join(', ');
-  }
-
-  async function submit() {
-    const payload = {
-      q1: document.getElementById('q1').value.trim(),
-      q2: document.getElementById('q2').value.trim(),
-      emotions: getChips('emo-chips'),
-      mood: getChips('mood-chips'),
-      alone: getChips('alone-chips'),
-      step: [getChips('step-chips'), document.getElementById('q4').value.trim()].filter(Boolean).join(' / '),
-      q5: document.getElementById('q5').value.trim()
-    };
-
-    const btn = document.getElementById('submit-btn');
-    const sending = document.getElementById('sending-msg');
-    btn.disabled = true;
-    sending.style.display = 'block';
-
-    try {
-      await fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-    } catch (err) {
-      console.log('전송 완료 (no-cors)');
+  /* ✏️ 비밀번호를 여기서 바꾸세요 */
+  var PASSWORD = 2580*;
+  function checkPw() {
+    if (document.getElementById('pw').value === PASSWORD) {
+      document.getElementById('lock').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+    } else {
+      document.getElementById('err').style.display = 'block';
     }
-
-    sending.style.display = 'none';
-    document.getElementById('done-box').classList.add('show');
-    document.getElementById('done-box').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 </script>
 </body>
