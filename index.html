@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>마음에서 피어나는 정원 — 6주차</title>
+<title>마음에서 피어나는 정원 — 7주차</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap');
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -42,7 +42,6 @@
   .attend-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
   .attend-tag { display: flex; align-items: center; gap: 5px; background: #E1F5EE; border-radius: 20px; padding: 5px 12px; font-size: 12px; color: #0F6E56; }
   .absent-tag { background: #f5f4f0; color: #999; border-radius: 20px; padding: 5px 12px; font-size: 12px; }
-  .new-badge { font-size: 10px; background: #185FA5; color: #fff; border-radius: 10px; padding: 1px 6px; margin-left: 4px; }
 
   .activity-list { display: flex; flex-direction: column; gap: 10px; }
   .activity-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; background: #f5f4f0; border-radius: 10px; font-size: 14px; color: #333; line-height: 1.6; }
@@ -56,7 +55,6 @@
   .crew-emoji { font-size: 22px; }
   .crew-name { font-size: 15px; font-weight: 500; color: #222; }
   .crew-desc { font-size: 13px; color: #555; line-height: 2; }
-  .crew-desc img { width: 100%; border-radius: 8px; margin-top: 10px; margin-bottom: 10px; }
 
   .highlight-box { background: #f0f7f0; border-left: 3px solid #3B6D11; border-radius: 0 10px 10px 0; padding: 14px 16px; margin-bottom: 1.25rem; }
   .highlight-label { font-size: 11px; font-weight: 500; color: #3B6D11; margin-bottom: 8px; }
@@ -65,9 +63,6 @@
   .etc-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.25rem; }
   .etc-item { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: #555; line-height: 1.7; padding: 10px 14px; background: #f5f4f0; border-radius: 10px; }
   .etc-num { font-size: 11px; font-weight: 500; color: #185FA5; flex-shrink: 0; margin-top: 2px; }
-
-  .special-box { background: #fff8e6; border-left: 3px solid #f0a500; border-radius: 0 10px 10px 0; padding: 14px 16px; font-size: 13px; color: #555; line-height: 1.8; margin-bottom: 1.25rem; }
-  .special-label { font-size: 11px; font-weight: 500; color: #b07000; margin-bottom: 6px; }
 
   .next-box { background: #FFF8F0; border-left: 3px solid #D85A30; border-radius: 0 10px 10px 0; padding: 14px 16px; font-size: 14px; color: #555; line-height: 1.8; }
   .footer { text-align: center; font-size: 12px; color: #bbb; padding: 2rem 0 0; }
@@ -81,7 +76,7 @@
     <div class="icon">🌱</div>
     <h2>마음에서 피어나는 정원</h2>
     <p>관계자 전용 수업 피드백입니다</p>
-    <input type="password" id="pw" placeholder="비밀번호를 입력하세요" onkeyup="if(event.key==='Enter') checkPw()">
+    <input type="password" id="pw" placeholder="2580*" onkeyup="if(event.key==='Enter') checkPw()">
     <button onclick="checkPw()">확인</button>
     <p id="err">비밀번호가 맞지 않아요</p>
   </div>
@@ -92,15 +87,15 @@
   <div class="header">
     <a class="back-btn" href="index.html">← 목록으로</a>
     <div class="flowers">
-      <span class="flower">🎨</span>
-      <span class="flower">🗺️</span>
       <span class="flower">🌱</span>
-      <span class="flower">✨</span>
-      <span class="flower">🍀</span>
+      <span class="flower">🌷</span>
+      <span class="flower">🎨</span>
+      <span class="flower">🌸</span>
+      <span class="flower">🍃</span>
     </div>
     <div class="program-tag">고립·은둔청년 미술 프로그램</div>
     <div class="title">마음에서 피어나는 정원</div>
-    <div class="subtitle">6주차 수업 피드백 · 행복 지도 · 2026</div>
+    <div class="subtitle">7주차 수업 피드백 · 단체 작업 · 2026</div>
   </div>
 
 
@@ -111,28 +106,25 @@
     <div style="font-size:12px; color:#aaa; margin-bottom:8px;">참석</div>
     <div class="attend-wrap">
       <div class="attend-tag">🌀 검진홍</div>
+      <div class="attend-tag">🌸 김도희</div>
+      <div class="attend-tag">🌟 류성하</div>
       <div class="attend-tag">♟️ 박진우</div>
       <div class="attend-tag">☀️ 박찬종</div>
       <div class="attend-tag">🪨 박형신</div>
-      <div class="attend-tag">🍃 정혜인</div>
-      <div class="attend-tag">🌸 김도희</div>
-      <div class="attend-tag">🌟 류성하 <span class="new-badge">첫참여</span></div>
     </div>
-    <div class="attend-wrap" style="margin-top:8px;">
+    <div class="attend-wrap" style="margin-top:4px;">
       <div class="absent-tag">🌿 박우석 — 불참</div>
+      <div class="absent-tag">🍃 정혜인 — 불참</div>
     </div>
 
     <div class="activity-list" style="margin-top:1rem;">
-      <div class="activity-item"><div class="step-num">1</div>행복한 시선 다지기</div>
-      <div class="activity-item"><div class="step-num">2</div>행복 지도 나누기</div>
-      <div class="activity-item"><div class="step-num">3</div>나눔 및 다음 전시 계획 상의</div>
+      <div class="activity-item"><div class="step-num">1</div>영상 상영 — 행복의 빈도, 눈치 보지 않기</div>
+      <div class="activity-item"><div class="step-num">2</div>단체 작업 — 씨앗에서 시작해 꽃이 피어나는 장면 그리기 (저번 주 합의된 장면)</div>
     </div>
 
     <div class="summary-box" style="margin-top:1rem;">
-      전보다 속도를 천천히 했더니 급한 마음 없이 전체적으로 잘 진행됨.<br>
-      다만 2시간 내 미완성·완성 공존, 속도 차이는 여전히 있는 편.<br>
-      전시회 작품 진행 시 급하다고 느낄 것 같아 다음 주로 미루고 진행 방식을 설명함.<br>
-      오늘의 키워드 4개 중 하고 싶은 부분을 선택해 진행 — 컬러링 방식을 알려줬는데 각자의 방식으로 창의적으로 표현해서 신선했음.
+      6주 동안 진행한 과정의 의미를 간략히 전하고 싶었으나 집중이 잘 안 되어 스킵하고 바로 본론으로 들어감.<br><br>
+      저번 주 다 같이 그리기로 동의한 장면이었는데, 진우님이 갑자기 다른 의견을 내면서 시간이 지연됨. 생각했던 장면·컬러와 살짝 달라져 다소 아쉬운 부분이 있었지만, 다 같이 의견을 조율해 나가는 차원에서는 아주 좋았음.
     </div>
   </div>
 
@@ -149,8 +141,9 @@
           <div class="crew-name">검진홍</div>
         </div>
         <div class="crew-desc">
-          레드와 골드를 가득 사용.<br>
-          예전 스토리라고 말하며 두 명의 캐릭터 인물을 그렸으나, 망쳤다고 그림을 덮어둠.
+          본인이 할 게 없다며 멈추려 하다가, 나뭇잎을 대보자고 권하니 성실하게 붙임.<br>
+          그리던 부분의 톤이 달라져 다들 당황했으나, 본인이 더 추가하겠다고 함.<br>
+          도희가 "다 같이 하는 것이니 이야기하고 하면 좋겠다"고 말한 후 추가한 내용에 모두 만족함.
         </div>
       </div>
 
@@ -161,9 +154,20 @@
           <div class="crew-name">김도희</div>
         </div>
         <div class="crew-desc">
-          오랜만에 참여 — 스스로 멋쩍어 하는 듯해서 평소처럼 대함.<br>
-          중간에 이동해 완성은 했으나 어떤 내용을 담았는지 파악 어려움.<br>
-          나머지 캔버스 하나는 다음에 하겠다고 함.
+          심리적으로 살짝 불안정하고 다운되어 보였으나, 끝까지 남아서 꽃을 마무리함.
+        </div>
+      </div>
+
+      <!-- 류성하 -->
+      <div class="crew-card">
+        <div class="crew-header">
+          <div class="crew-emoji">🌟</div>
+          <div class="crew-name">류성하</div>
+        </div>
+        <div class="crew-desc">
+          묵묵히 서포트해주고 전체 무게 중심을 잡아가며 자리함.<br>
+          샘플을 보여주면 끝까지 해내는 편이고, 전체 맥락을 보면서 이야기함.<br>
+          검진홍의 그림이 빨강으로 튀는 느낌이 있을 때, 빨간 톤의 꽃을 중간에 넣어주며 전체 밸런스를 맞춤.
         </div>
       </div>
 
@@ -174,8 +178,9 @@
           <div class="crew-name">박진우</div>
         </div>
         <div class="crew-desc">
-          진홍을 잘 챙기고 같이 있기를 좋아함.<br>
-          다양한 컬러로 칠할 수 있는 캐릭터를 바로 선택해서 그림.
+          수업 중 대화량이 상당해 주의를 줌 (이유는 명확치 않으나, 캐릭터를 직접 그리지 않은 것이 영향을 준 듯함).<br>
+          저번 시간에 종료된 '고래 그리기'를 계속 어필하길래, 정원에 고래가 어울리지 않는다고 안내한 후부터 집중도가 크게 떨어짐.<br>
+          배경색으로 어두운 색을 권했으나 밝은 색을 골라 전체 톤에 영향을 줌.
         </div>
       </div>
 
@@ -186,9 +191,8 @@
           <div class="crew-name">박찬종</div>
         </div>
         <div class="crew-desc">
-          개인 일정이 타이트했지만 미술 프로그램에 참여하기 위해 수업 전까지 열정적으로 일을 처리하고 참여함.<br>
-          컬러 방식과 형태를 자신만의 것으로 승화. 컬러감이 이케아풍의 느낌.<br>
-          경제적으로 어려웠던 시절에도 6~7살 때 다라이에서 놀며 즐거웠던 추억이 생각난다고 함.
+          저녁까지 일해서 허리가 아픈 상황이라고 함.<br>
+          컬러를 잘 조합해 전체 톤을 맞춰달라는 부탁을 받았고, 잘 해나감.
         </div>
       </div>
 
@@ -199,35 +203,8 @@
           <div class="crew-name">박형신</div>
         </div>
         <div class="crew-desc">
-          중간에 피로감을 호소했지만 자체적으로 컨디션을 조절하며 작업함.<br>
-          잭슨 폴락처럼 흩뿌리기를 해서 다들 환호했으나 뭉개기 방식으로 진행함.
-        </div>
-      </div>
-
-      <!-- 정혜인 -->
-      <div class="crew-card">
-        <div class="crew-header">
-          <div class="crew-emoji">🍃</div>
-          <div class="crew-name">정혜인</div>
-        </div>
-        <div class="crew-desc">
-          저번 시간 만든 달항아리 배경을 더 입힘.<br>
-          자발적으로 알아서 잘 해나가는 편.<br>
-          처음으로 컬러링을 어떻게 해야 할지 모르겠다고 해서, 그 배경에서 다시 시작해보라고 안내함.<br>
-          모네의 느낌을 잘 담아서 표현하는 편.
-        </div>
-      </div>
-
-      <!-- 류성하 (첫 참여) -->
-      <div class="crew-card" style="border: 1px solid #E6F1FB;">
-        <div class="crew-header">
-          <div class="crew-emoji">🌟</div>
-          <div class="crew-name">류성하 <span style="font-size:11px; color:#185FA5; background:#E6F1FB; border-radius:10px; padding:2px 8px; margin-left:4px;">첫 참여</span></div>
-        </div>
-        <div class="crew-desc">
-          처음엔 어떻게 시작해야 할지 망설였으나, 완성된 작품에 스토리가 담긴 컬러로 자신을 솔직하게 표현함.<br>
-          세탁기 고장으로 발도 다쳤지만, 세탁기 바닥에 다리를 세워 다시 고쳤다는 내용을 컬러와 형태로 이해하기 쉽게 전달함.<br>
-          뿌듯했던 점까지 잘 캐치해서 표현함.
+          점심때부터 체력 컨디션이 피곤해 보임.<br>
+          다 같이 작업할 때 틀릴까 봐 들어가지 못했으나, 역할을 부여하고 방법을 알려주자 그때부터 상당히 열심히 함.
         </div>
       </div>
 
@@ -242,29 +219,20 @@
     <div class="highlight-box">
       <div class="highlight-label">✦ 오늘의 인상적인 순간</div>
       <div class="highlight-text">
-        <strong>1) 박찬종</strong><br>
-        어떻게든 일을 마무리하고 미술 프로그램에 참여하려는 마음이 느껴짐.<br>
-        컬러만 칠한다고 했는데, 물고기 모양으로 종이를 오리고 펀치를 뚫는 참신한 방식으로 표현함.<br><br>
-        <strong>2) 박형신</strong><br>
-        흩뿌리기를 잘 해냈고, 다음 색으로 가자고 하니 뭉개는 게 본인은 더 좋다며 자신의 스타일을 지킴.<br>
-        다른 사람들의 말에 눈치 보지 않고 의견을 말하며 나아가는 힘이 생긴 것 같아서 기쁨.<br>
-        (저번 시간엔 계속 바뀌었는데, 오늘은 새로운 태도였음)<br><br>
-        <strong>3) 관계</strong><br>
-        진우가 진홍을 챙기는 모습, 진우·진홍·형신이 함께 대화하는 모습이 좋아 보임.
+        <strong>1) 검진홍</strong><br>
+        틀렸음을 감지했을 때도 멈추지 않고 계속 도전하는 모습, 그리고 사람들을 설득하기 위해 미리 스케치를 해서 보여주는 모습이 참 보람되고 뿌듯했음.<br><br>
+        <strong>2) 전체</strong><br>
+        서로 서로 이야기하고 맞춰가는 방식이 참 보기 좋았음.<br><br>
+        <strong>3) 검진홍(으로 추정)</strong><br>
+        오늘 수업이 가장 좋았다고 말함.
       </div>
     </div>
 
     <div class="etc-list">
-      <div class="etc-item"><span class="etc-num">1</span>물감이 부족한 사태 발생 — 추가로 임시 구매함.</div>
-      <div class="etc-item"><span class="etc-num">2</span>예시를 보여줬지만 달라지는 방식을 보며, 전시회 그림에 가이드를 명확히 주지 않으면 혼선이 올 것 같음.</div>
-      <div class="etc-item"><span class="etc-num">3</span>역할 부여, 꽃 그리는 법, 본인이 하고 싶은 아이템 그리는 구역 등 가이드 준비 예정.</div>
-      <div class="etc-item"><span class="etc-num">4</span>마지막 설문 조사 (다음 주 종이로 배부 예정) 독려 — 안나 코치님께 부탁함.</div>
-      <div class="etc-item"><span class="etc-num">5</span>각자의 스타일로 표현하는 모습을 보니 전시회가 기대됨.</div>
-    </div>
-
-    <div class="special-box">
-      <div class="special-label">😄 특이사항</div>
-      하품을 굉장히 많이 함 ㅋㅋ 쉬는 시간에도 안 움직이며 작업에 몰두했음. 배경 노래가 차분하기도 했음.
+      <div class="etc-item"><span class="etc-num">1</span>오늘로 마무리하는 것이 아니라 1차이며, 2차는 하반기에 한 번 더 모여서 진행할 것이라고 공지함.</div>
+      <div class="etc-item"><span class="etc-num">2</span>3시 30분에 마무리하고 나눔 시간을 가지려 했으나, 다들 그림에 몰두해 정리가 늦어져 4시 30분에 종료됨.</div>
+      <div class="etc-item"><span class="etc-num">3</span>집중하고 끝까지 하는 모습이 보기 좋았음.</div>
+      <div class="etc-item"><span class="etc-num">4</span>설문지로 의견을 들음.</div>
     </div>
   </div>
 
@@ -273,17 +241,17 @@
   <div class="section">
     <div class="section-label">👣 다음을 위한 한 걸음</div>
     <div class="next-box">
-      🛒 캔버스 천, 물감, 페이스트 추가 구매 예정
+      🗓️ 하반기 2차 모임 일정 협의 예정
     </div>
   </div>
 
 
-  <div class="footer">함께해 주셔서 감사합니다 <span class="heart">♥</span><br>다음 주에도 함께 정원을 가꾸겠습니다 🌱</div>
+  <div class="footer">함께해 주셔서 감사합니다 <span class="heart">♥</span><br>다음에도 함께 정원을 가꾸겠습니다 🌱</div>
 
 </div>
 
 <script>
-  var PASSWORD = "2580*";
+  var PASSWORD = "여기를바꾸세요";
   function checkPw() {
     if (document.getElementById('pw').value === PASSWORD) {
       document.getElementById('lock').style.display = 'none';
